@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Website</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Or for .png -->
+    <link rel="icon" href="logo.png" type="image/png">
+    <style>
+        .h-96 {
+            height: 24rem; /* 384px */
+        }
+
+        /* Increase height for PC view (screens >= 768px) */
+        @media (min-width: 768px) {
+            .h-96 {
+                height: 36rem; /* 576px, adjust as needed */
+            }
+        }
+
+        section {
+            background-color: #fff;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        @media (max-width: 767px) {
+            .container {
+                flex-direction: column;
+            }
+            .md\:w-1\/2 {
+                width: 100%;
+            }
+        }
+        
+        .feedback-card {
+            display: flex;
+            align-items: flex-start;
+            background: white;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .feedback-image {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 1rem;
+        }
+        .feedback-content {
+            flex: 1;
+        }
+        .feedback-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+        .feedback-name {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #1a202c;
+        }
+        .feedback-meta {
+            font-size: 0.875rem;
+            color: #718096;
+        }
+        .feedback-rating {
+            display: flex;
+            gap: 0.25rem;
+            margin-bottom: 0.5rem;
+        }
+        .rating-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #38a169; /* Green color for filled dots */
+        }
+        .rating-dot-empty {
+            background-color: #e2e8f0; /* Gray color for empty dots */
+        }
+        .feedback-quote-limited {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            color: #4a5568;
+            margin-bottom: 0.5rem;
+        }
+        .feedback-quote {
+            color: #4a5568;
+            margin-bottom: 0.5rem;
+        }
+        .read-more {
+            color: #3182ce;
+            font-weight: 500;
+            cursor: pointer;
+        }
+        .read-more:hover {
+            text-decoration: underline;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in { animation: fadeIn 1s ease-out; }
+        .hover-scale { transition: transform 0.3s ease; }
+        .hover-scale:hover { transform: scale(1.05); }
+        .bg-gradient { background: linear-gradient(to bottom, #f7fafc, #edf2f7); }
+        .shadow-xl { box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); }
+    </style>
+</head>
+<body class="font-sans">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md py-4">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <img src="./images/logo.png" alt="Logo" class="h-16"> <!-- Changed from h-13 to h-16 -->
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-700 hover:text-blue-600 transition duration-300">Home</a>
+                    <a href="tours.html" class="text-gray-700 hover:text-blue-600 transition duration-300">Tours</a>
+                    <a href="our-bike.html" class="text-gray-700 hover:text-blue-600 transition duration-300">Bike & Gear</a>
+                    <a href="about.html" class="text-gray-700 hover:text-blue-600 transition duration-300">About</a>
+                    <a href="why-us.html" class="text-gray-700 hover:text-blue-600 transition duration-300">Why us</a>
+                    <a href="contact.html" class="text-gray-700 hover:text-blue-600 transition duration-300">Contact</a>
+                </div>
+
+                <!-- Hamburger Menu Button -->
+                <div class="md:hidden">
+                    <button id="menu-toggle" class="text-gray-700 focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path id="hamburger" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                            <path id="close" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="md:hidden hidden">
+                <div class="pt-2 pb-3 space-y-1">
+                    <a href="index.html" class="block px-3 py-2 text-gray-700 hover:text-blue-600 hover:bg-gray-50">Home</a>
+                    <a href="tours.html" class="block px-3 py-2 text-gray-700 hover:text-blue-600 hover:bg-gray-50">Tours</a>
+                    <a href="our-bike.html" class="block px-3 py-2 text-gray-700 hover:text-blue-600 hover:bg-gray-50">Bike & Gear</a>
+                    <a href="about.html" class="block px-3 py-2 text-gray-700 hover:text-blue-600 hover:bg-gray-50">About</a>
+                    <a href="why-us.html" class="block px-3 py-2 text-gray-700 hover:text-blue-600 hover:bg-gray-50">Why us</a>
+                    <a href="contact.html" class="block px-3 py-2 text-gray-700 hover:text-blue-600 hover:bg-gray-50">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative h-96 overflow-hidden">
+        <div class="w-full h-full bg-cover bg-center" style="background-image: url('https://i.pinimg.com/736x/85/86/7a/85867a6d2fbb7fc1fd911cf7759e45bf.jpg');">
+            <div class="absolute inset-0 bg-black bg-opacity-30"></div>
+            <div class="relative h-full flex items-end justify-center text-center text-white pb-12">
+                <div>
+                    <h1 class="text-4xl font-bold mb-4">About us</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="py-12 px-4 sm:px-6 lg:px-8 bg-gray-50">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row gap-8">
+            <!-- Left Heading -->
+            <div class="md:w-1/3">
+                <h3 class="text-3xl md:text-4xl font-bold text-red-600 leading-tight">
+                    A Local Expert & Off-Road Enthusiast
+                </h3>
+            </div>
+            <!-- Right Description -->
+            <div class="md:w-2/3 text-gray-700">
+                <p class="text-lg mb-4">
+                    Welcome to Dirtbike Expeditions, where adventure meets the untamed spirit of Cambodia! Founded by a local expert, we specialize in immersive dirt bike tours that take you deep into the heart of this beautiful and diverse country. Our passion is to share the thrill of off-road riding while showcasing the breathtaking landscapes, rich history, and vibrant culture of Cambodia and beyond.
+                </p>
+                <p class="text-lg">
+                    At Dirtbike Expeditions, we are a dedicated team of riding enthusiasts and local guides with a deep love for our homeland. We have spent years exploring Cambodia’s remote trails and hidden gems. Our extensive knowledge of the terrain and its history ensures that every expedition is not just an adventure but also an opportunity to connect with the culture and stories of the land.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Story -->
+    <section class="max-w-5xl mx-auto px-4 py-20 bg-gradient">
+        <h2 class="text-4xl font-extrabold mb-8 text-center text-gray-800 fade-in">Our Story</h2>
+        <p class="text-lg leading-relaxed text-center text-gray-600 max-w-3xl mx-auto fade-in">
+            At <strong class="text-yellow-600">DirtSurge Expedition</strong>, we’re more than just guides—we’re riders at heart. 
+            Founded by locals with a passion for off-road biking, our mission is to bring you thrilling, safe, and unforgettable 
+            rides through the wild trails of Cambodia. Whether you're a beginner or a pro, we’ve got an adventure waiting for you.
+        </p>
+    </section>
+
+    <!-- Team Section -->
+    <section class="py-16 px-4 bg-gray-100">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-4xl font-extrabold text-center mb-12 text-gray-800 fade-in">Meet the Team</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Team Member 1 -->
+                <div class="bg-white rounded-xl shadow-xl overflow-hidden hover-scale fade-in">
+                    <div class="relative w-full h-64">
+                        <img class="absolute inset-0 w-full h-full object-cover" src="./images/pech.jpg" alt="Mr. Seavpeav Pech" style="object-fit: cover;" />
+                    </div>
+                    <div class="p-6">
+                        <h5 class="text-2xl font-bold text-gray-900 mb-2">Mr. Seavpeav Pech</h5>
+                        <p class="text-gray-600">Tour Guide</p>
+                    </div>
+                </div>
+                <!-- Team Member 2 -->
+                <div class="bg-white rounded-xl shadow-xl overflow-hidden hover-scale fade-in">
+                    <div class="relative w-full h-64">
+                        <img class="absolute inset-0 w-full h-full object-cover" src="./images/girl.jpg" alt="Ms. Sokha Lim" style="object-fit: cover;" />
+                    </div>
+                    <div class="p-6">
+                        <h5 class="text-2xl font-bold text-gray-900 mb-2">Ms. Sokha Lim</h5>
+                        <p class="text-gray-600">Expedition Leader</p>
+                    </div>
+                </div>
+                <!-- Team Member 3 -->
+                <div class="bg-white rounded-xl shadow-xl overflow-hidden hover-scale fade-in">
+                    <div class="relative w-full h-64">
+                        <img class="absolute inset-0 w-full h-full object-cover" src="./images/man.jpg" alt="Mr. Rithy Chan" style="object-fit: cover;" />
+                    </div>
+                    <div class="p-6">
+                        <h5 class="text-2xl font-bold text-gray-900 mb-2">Mr. Rithy Chan</h5>
+                        <p class="text-gray-600">Mechanic & Support</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Mission -->
+    <section class="bg-white py-16 px-4">
+        <div class="max-w-4xl mx-auto text-center">
+            <h3 class="text-3xl font-semibold mb-6 text-gray-800 fade-in">Our Mission</h3>
+            <p class="text-lg text-gray-600 leading-relaxed fade-in">
+                To provide world-class dirt bike experiences that connect riders with nature, culture, and adrenaline — all while 
+                ensuring safety, quality, and adventure.
+            </p>
+        </div>
+    </section>
+
+    <!-- Unique Selling Points -->
+    <section class="py-20 px-4 bg-gray-50">
+        <div class="max-w-6xl mx-auto">
+            <h3 class="text-3xl font-extrabold mb-12 text-center text-gray-800 fade-in">What Makes Us Unique</h3>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-xl shadow-xl hover-scale fade-in">
+                    <h4 class="text-xl font-semibold mb-3 text-gray-800">Expert Guides</h4>
+                    <p class="text-gray-600">Led by experienced riders who know the trails like the back of their hand.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-xl hover-scale fade-in">
+                    <h4 class="text-xl font-semibold mb-3 text-gray-800">Top-Notch Bikes</h4>
+                    <p class="text-gray-600">High-performance bikes, well maintained and ready for any terrain.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-xl hover-scale fade-in">
+                    <h4 class="text-xl font-semibold mb-3 text-gray-800">Customized Tours</h4>
+                    <p class="text-gray-600">Personalized routes for beginners to adrenaline junkies.</ extrema>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-xl hover-scale fade-in">
+                    <h4 class="text-xl font-semibold mb-3 text-gray-800">Local Insights</h4>
+                    <p class="text-gray-600">Ride through hidden gems and experience the local culture.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-xl hover-scale fade-in">
+                    <h4 class="text-xl font-semibold mb-3 text-gray-800">Safety First</h4>
+                    <p class="text-gray-600">Protective gear and trained guides to ensure your safety.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-xl hover-scale fade-in">
+                    <h4 class="text-xl font-semibold mb-3 text-gray-800">Epic Memories</h4>
+                    <p class="text-gray-600">Capture every thrilling moment on camera with our GoPro service.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-20 px-4 bg-white">
+        <div class="max-w-5xl mx-auto text-center">
+            <h3 class="text-3xl font-extrabold mb-12 text-gray-800 fade-in">What Our Riders Say</h3>
+            <div class="space-y-10">
+                <blockquote class="text-lg italic text-gray-600 max-w-2xl mx-auto fade-in">
+                    “One of the best experiences I’ve ever had! The guides were professional, friendly, and the views were insane.” 
+                    – <strong class="text-yellow-600">Alex M.</strong>
+                </blockquote>
+                <blockquote class="text-lg italic text-gray-600 max-w-2xl mx-auto fade-in">
+                    “First time on a dirt bike, and I felt totally safe and supported the whole way. Highly recommend!” 
+                    – <strong class="text-yellow-600">Sophia L.</strong>
+                </blockquote>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-20 px-4 bg-gray-900 text-white text-center">
+        <h3 class="text-4xl font-extrabold mb-6 fade-in">Ready to Ride?</h3>
+        <p class="mb-8 text-lg max-w-xl mx-auto fade-in">
+            Join our next tour and experience the thrill of the dirt like never before.
+        </p>
+        <a href="./contact.html" class="inline-block bg-yellow-500 hover:bg-yellow-600 text-black font-semibold px-10 py-4 rounded-full transition hover-scale fade-in">
+            Contact Us
+        </a>
+    </section>
+
+    
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-16">
+        <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div>
+                <img src="./images/logo.png" alt="Logo" class="h-13 mb-4">
+                <p class="text-gray-400 mb-4">DirtSurge Expeditions offers unforgettable adventures across the globe.</p>
+                <div class="flex space-x-4">
+                    <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
+                    <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Expeditions</h3>
+                <ul class="space-y-2">
+                    <li><a href="#" class="text-gray-400 hover:text-white">Paris</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white">Tokyo</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white">New York</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white">Rome</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Company</h3>
+                <ul class="space-y-2">
+                    <li><a href="#" class="text-gray-400 hover:text-white">About Us</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white">Why Us</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white">All Expeditions</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white">Bikes & Gears</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white">Reviews</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white">Contact Us</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Contact</h3>
+                <p class="text-gray-400 mb-4">We Accept Payment:</p>
+                <img src="./images/payment.png" alt="Payment" sizes="70px" class="mb-4">
+                <p class="text-gray-400">123 Adventure St, Travel City</p>
+                <p class="text-gray-400">Phone: +1 234 567 890</p>
+                <p class="text-gray-400">WhatsApp: +855 10 34 20 20</p>
+                <p class="text-gray-400">info@dirtsurgeexpeditions.com</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="./js/main.js"></script>
+</body>
+</html>
