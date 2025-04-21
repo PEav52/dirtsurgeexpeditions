@@ -200,8 +200,8 @@ const feedbacks = [
 const feedbackList = document.getElementById("feedbackList");
 const loadMoreBtn = document.getElementById("loadMoreBtn");
 
-// let feecurrentIndex = 0; // Fixed: Added missing currentIndex declaration
-const itemsPerPage = 6;
+// let currentIndex = 0; // Fixed: Added missing currentIndex declaration
+const itemsPerPage = 3;
 
 function createCard({ name, quote, rating, date, source, image }) {
     return `
@@ -226,14 +226,14 @@ function createCard({ name, quote, rating, date, source, image }) {
 
 
 function loadFeedbacks() {
-    const nextFeedbacks = feedbacks.slice(feecurrentIndex, feecurrentIndex + itemsPerPage);
+    const nextFeedbacks = feedbacks.slice(currentIndex, currentIndex + itemsPerPage);
     nextFeedbacks.forEach(fb => {
         const cardHTML = createCard(fb);
         feedbackList.insertAdjacentHTML('beforeend', cardHTML);
     });
-    feecurrentIndex += itemsPerPage;
+    currentIndex += itemsPerPage;
 
-    if (feecurrentIndex >= feedbacks.length) {
+    if (currentIndex >= feedbacks.length) {
         loadMoreBtn.style.display = "none";
     }
 

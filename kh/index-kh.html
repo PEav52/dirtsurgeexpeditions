@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="kh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Website</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Or for .png -->
+    <link rel="icon" href="logo.png" type="image/png">
+    <style>
+        .h-96 {
+            height: 24rem; /* 384px */
+        }
+
+        /* Increase height for PC view (screens >= 768px) */
+        @media (min-width: 768px) {
+            .h-96 {
+                height: 36rem; /* 576px, adjust as needed */
+            }
+        }
+
+        .slider-container {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        .slide {
+            flex: 0 0 100%;
+            width: 100%;
+        }
+        
+        .carousel-container-unique {
+            position: relative;
+            overflow: hidden;
+        }
+        .carousel-track-unique {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        .carousel-card-unique {
+            flex: 0 0 100%;
+            padding: 0px 70px 0px 70px;
+        }
+        .carousel-arrow-unique {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 1rem;
+            cursor: pointer;
+            z-index: 10;
+        }
+        .prev-arrow-unique {
+            left: 10px;
+        }
+        .next-arrow-unique {
+            right: 10px;
+        }
+
+        /* Responsive - remove padding on small screens */
+        @media (max-width: 768px) {
+            .carousel-card-unique {
+                padding: 0; /* Remove padding on mobile */
+            }
+        }
+
+        .card-arrow {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+        }
+        
+        .feedback-card {
+            display: flex;
+            align-items: flex-start;
+            background: white;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .feedback-image {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 1rem;
+        }
+        .feedback-content {
+            flex: 1;
+        }
+        .feedback-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+        .feedback-name {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #1a202c;
+        }
+        .feedback-meta {
+            font-size: 0.875rem;
+            color: #718096;
+        }
+        .feedback-rating {
+            display: flex;
+            gap: 0.25rem;
+            margin-bottom: 0.5rem;
+        }
+        .rating-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #38a169; /* Green color for filled dots */
+        }
+        .rating-dot-empty {
+            background-color: #e2e8f0; /* Gray color for empty dots */
+        }
+        .feedback-quote-limited {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            color: #4a5568;
+            margin-bottom: 0.5rem;
+        }
+        .feedback-quote {
+            color: #4a5568;
+            margin-bottom: 0.5rem;
+        }
+        .read-more {
+            color: #3182ce;
+            font-weight: 500;
+            cursor: pointer;
+        }
+        .read-more:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body class="font-sans">
+        <!-- Navigation -->
+        <nav class="bg-white shadow-md py-4">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center">
+                <!-- Logo -->
+                <div class="flex items-center">
+                <img src="../images/logo.png" alt="Company Logo" class="h-16">
+                </div>
+        
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                <a href="index-kh.html" class="text-gray-700 hover:text-blue-600 transition duration-300">ទំទ័រដើម</a>
+                <a href="tours-kh.html" class="text-gray-700 hover:text-blue-600 transition duration-300">ដំណើរកម្សាន្ត</a>
+                <a href="our-bike-kh.html" class="text-gray-700 hover:text-blue-600 transition duration-300">ម៉ូតូនិងគ្រឿងបរិក្ខារ</a>
+                <a href="about-kh.html" class="text-gray-700 hover:text-blue-600 transition duration-300">អំពីយើង</a>
+                <a href="why-us-kh.html" class="text-gray-700 hover:text-blue-600 transition duration-300">ហេតុអ្វីជ្រើសយើង</a>
+                <a href="contact-kh.html" class="text-gray-700 hover:text-blue-600 transition duration-300">ទំនាក់ទំនង</a>
+                <!-- Language Switcher Links (Desktop) -->
+                <div class="flex items-center space-x-2">
+                    <a href="../index.html" class="text-gray-700 hover:text-blue-600 transition duration-300" aria-label="Switch to English" lang="en">EN</a>
+                    <span class="text-gray-700">|</span>
+                    <a href="index-kh.html" class="text-gray-700 hover:text-blue-600 transition duration-300" aria-label="Switch to Khmer" lang="km">KH</a>
+                </div>
+                </div>
+        
+                <!-- Hamburger Menu Button and Mobile Language Switcher -->
+                <div class="md:hidden flex items-center space-x-4">
+                <!-- Language Switcher Links (Mobile) -->
+                <div class="flex items-center space-x-2">
+                    <a href="../index.html" class="text-gray-700 hover:text-blue-600 transition duration-300" aria-label="Switch to English" lang="en">EN</a>
+                    <span class="text-gray-700">|</span>
+                    <a href="index-kh.html" class="text-gray-700 hover:text-blue-600 transition duration-300" aria-label="Switch to Khmer" lang="km">KH</a>
+                </div>
+                <button id="menu-toggle" class="text-gray-700 focus:outline-none" aria-label="Toggle mobile menu">
+                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path id="hamburger" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    <path id="close" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+                </div>
+            </div>
+        
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="md:hidden hidden">
+                <div class="pt-2 pb-3 space-y-1">
+                <a href="index-kh.html" class="block px-3 py-2 text-gray-700 hover:text-blue-600 hover:bg-gray-50">ទំទ័រដើម</a>
+                <a href="tours-kh.html" class="block px-3 py-2 text-gray-700 hover:text-blue-600 hover:bg-gray-50">ដំណើរកម្សាន្ត</a>
+                <a href="our-bike-kh.html" class="block px-3 py-2 text-gray-700 hover:text-blue-600 hover:bg-gray-50">ម៉ូតូនិងគ្រឿងបរិក្ខារ</a>
+                <a href="about-kh.html" class="block px-3 py-2 text-gray-700 hover:text-blue-600 hover:bg-gray-50">អំពីយើង</a>
+                <a href="why-us-kh.html" class="block px-3 py-2 text-gray-700 hover:text-blue-600 hover:bg-gray-50">ហេតុអ្វីជ្រើសយើង</a>
+                <a href="contact-kh.html" class="block px-3 py-2 text-gray-700 hover:text-blue-600 hover:bg-gray-50">ទំនាក់ទំនង</a>
+                </div>
+            </div>
+            </div>
+        </nav>
+
+    <!-- Hero Section -->
+    <section class="relative h-96 overflow-hidden">
+        <!-- Slider Container -->
+        <div class="slider-container absolute w-full h-full flex" id="slider">
+            <!-- Slide 1 -->
+            <div class="slide w-full h-full bg-cover bg-center" style="background-image: url('https://i.pinimg.com/736x/98/49/30/984930bf7684d3e3a743abe8289e1a8e.jpg');">
+                <div class="absolute inset-0 bg-black bg-opacity-30"></div>
+                <div class="relative h-full flex items-end justify-center text-center text-white pb-12">
+                    <div>
+                        <h1 class="text-4xl font-bold mb-4">ការផ្សងព្រេងដ៏អស្ចារ្យ</h1>
+                        <p class="text-lg mb-6">ចាប់ផ្តើមដំណើរផ្សងព្រេងមួយជីវិតជាមួយនឹងដំណើរកម្សាន្តពិសេសរបស់យើង</p>
+                        <a href="#" class="bg-blue-600 text-white px-6 py-3 rounded-full hover:bg-blue-700 transition duration-300">រកដំណើរកម្សាន្ត</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Slide 2 -->
+            <div class="slide w-full h-full bg-cover bg-center" style="background-image: url('https://i.pinimg.com/736x/3d/8e/23/3d8e2363446d59146df9d48c6c7f7d88.jpg');">
+                <div class="absolute inset-0 bg-black bg-opacity-30"></div>
+                <div class="relative h-full flex items-end justify-center text-center text-white pb-12">
+                    <div>
+                        <h1 class="text-4xl font-bold mb-4">រុករកកន្លែងលាក់កំបាំង</h1>
+                        <p class="text-lg mb-6">ស្វែងរកទីតាំងសម្ងាត់ជាមួយនឹងបទពិសោធន៍ទេសចរណ៍ដែលបានរៀបចំដោយយើង</p>
+                        <a href="#" class="bg-blue-600 text-white px-6 py-3 rounded-full hover:bg-blue-700 transition duration-300">ចាប់ផ្តើមការរុករក</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Slide 3 -->
+            <div class="slide w-full h-full bg-cover bg-center" style="background-image: url('https://focus-cambodia.com/wp-content/uploads/2023/03/Delgado_Phnom-Tamao_0032-1-scaled-1.jpg');">
+                <div class="absolute inset-0 bg-black bg-opacity-30"></div>
+                <div class="relative h-full flex items-end justify-center text-center text-white pb-12">
+                    <div>
+                        <h1 class="text-4xl font-bold mb-4">ការផ្សងព្រេងកំពុងរង់ចាំអ្នក</h1>
+                        <p class="text-lg mb-6">ចូលរួមដំណើរកម្សាន្តដ៏រំភើបរបស់យើងសម្រាប់ដំណើរផ្សងព្រេងដែលមិនអាចបំភ្លេចបាន</p>
+                        <a href="#" class="bg-blue-600 text-white px-6 py-3 rounded-full hover:bg-blue-700 transition duration-300">ធ្វើការកក់ឥឡូវនេះ</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation Buttons -->
+        <!-- <button class="absolute top-1/2 left-4 transform -translate-y-1/2 text-white bg-black bg-opacity-50 p-2 rounded-full hover:bg-opacity-75" onclick="prevSlide()">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+            </svg>
+        </button>
+        <button class="absolute top-1/2 right-4 transform -translate-y-1/2 text-white bg-black bg-opacity-50 p-2 rounded-full hover:bg-opacity-75" onclick="nextSlide()">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+        </button> -->
+
+        <!-- Navigation Dots -->
+        <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+            <span class="dot w-3 h-3 bg-white rounded-full cursor-pointer opacity-75 hover:opacity-100" onclick="goToSlide(0)"></span>
+            <span class="dot w-3 h-3 bg-white rounded-full cursor-pointer opacity-75 hover:opacity-100" onclick="goToSlide(1)"></span>
+            <span class="dot w-3 h-3 bg-white rounded-full cursor-pointer opacity-75 hover:opacity-100" onclick="goToSlide(2)"></span>
+        </div>
+    </section>
+
+    <!-- Bikes & Gears Carousel -->
+    <section class="py-16">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-4">គេចចេញពីភាពសាមញ្ញ និងចូលរួមជាមួយការជិះផ្សងព្រេង!</h2>
+            <div class="carousel-container-unique">
+                <div class="carousel-track-unique" id="carouselTrackUnique">
+                    <!-- Card 1 -->
+                    <div class="carousel-card-unique">
+                        <div class="flex flex-col md:flex-row items-center bg-black text-white rounded-lg">
+                            <div class="md:w-1/2 p-8">
+                                <h3 class="text-3xl font-bold mb-4">Off-Road Expeditions®</h3>                                
+                                <p class="text-gray-300 mb-6">
+                                    ដំណើរកម្សាន្តម៉ូតូឌឺតរបស់យើងត្រូវបានរចនាឡើងដើម្បីផ្តល់ការផ្សងព្រេងរំភើបតាមភូមិសាស្ត្រចម្រុះ និងទេសភាពស្រស់ស្អាត។ អ្នកជិះនឹងឆ្លងកាត់ព្រៃក្រាស់ៗ ផ្លូវខ្សាច់ និងតំបន់ភ្នំ ដោយទទួលបទពិសោធន៍ពីសម្រស់ធម្មជាតិរបស់ប្រទេសកម្ពុជាយ៉ាងជិតស្និទ្ធ។ ដំណើរនេះជារឿយៗរួមបញ្ចូលការទស្សនាភូមិដាច់ស្រយាល ប្រាសាទបុរាណ និងទន្លេដ៏ស្រស់ស្អាត ដែលផ្តល់នូវការមើលឃើញពិសេសអំពីបេតិកភណ្ឌវប្បធម៌សម្បូរបែប និងជីវិតជនបទរបស់ប្រទេស។
+                                </p>
+                                <a href="#" class="text-red-500 font-semibold hover:underline">មើលម៉ូតូហុងដា និងគ្រឿងបរិក្ខារ ></a>
+                            </div>
+                            <div class="md:w-1/2">
+                                <img src="https://dirtbikeexpeditions.com/wp-content/uploads/2024/07/siem-reap-dirt-bike-tours09878.jpg" alt="Honda Dirtbike" class="w-full h-full object-cover rounded-r-lg">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card 2 -->
+                    <div class="carousel-card-unique">
+                        <div class="flex flex-col md:flex-row items-center bg-black text-white rounded-lg">
+                            <div class="md:w-1/2 p-8">
+                                <h3 class="text-3xl font-bold mb-4">អនុញ្ញាតឱ្យអ្នកជំនាញមូលដ្ឋានរបស់យើងណែនាំអ្នក</h3>
+                                <p class="text-gray-300 mb-6">
+                                    មគ្គុទ្ទេសក៍របស់យើងបានរុករកនៅលើទឹកដីនេះអស់រយៈពេលជាយូរមកហើយ ហើយជាលទ្ធផល បានស្គាល់ច្បាស់ពីតំបន់នេះ។ ពួកគេនិយាយភាសាកម្ពុជាយ៉ាងស្ទាត់ ហើយស្គាល់ផ្លូវច្បាស់ ដែលមានន័យថាអ្នកនឹងមិនត្រូវបារម្ភពីការវង្វេងផ្លូវទេ។
+                                </p>
+                                <a href="#" class="text-red-500 font-semibold hover:underline">មើលម៉ូតូយ៉ាម៉ាហា និងគ្រឿងបរិក្ខារ ></a>
+                            </div>
+                            <div class="md:w-1/2">
+                                <img src="https://dirtbikeexpeditions.com/wp-content/uploads/2024/07/dirt-bike-tour-in-cambodia2341.jpg" alt="Yamaha Dirtbike" class="w-full h-full object-cover rounded-r-lg">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card 3 -->
+                    <div class="carousel-card-unique">
+                        <div class="flex flex-col md:flex-row items-center bg-black text-white rounded-lg">
+                            <div class="md:w-1/2 p-8">
+                                <h3 class="text-3xl font-bold mb-4">ម៉ូតូ & គ្រឿងបរិក្ខារ</h3>
+                                <p class="text-gray-300 mb-6">
+                                    មានតែអ្វីដែលល្អបំផុតប៉ុណ្ណោះដែលល្មមគ្រប់គ្រាន់សម្រាប់អ្នក! យើងផ្តល់ជូននូវម៉ូតូឌឺតពីក្រុមហ៊ុន Honda, Yamaha និង KTM ដើម្បីផ្តល់ជូនអ្នកនូវការផ្សងព្រេងម៉ូតូឌឺតនៅកម្ពុជាដ៏អស្ចារ្យបំផុតដែលអ្នកអាចស្រមៃដល់។ ពិនិត្យមើលជម្រើសម៉ូតូអេនឌូរ៉ូកម្រិតខ្ពស់របស់យើង ដែលសមរម្យសម្រាប់អ្នកចាប់ផ្តើមថ្មី អ្នកមានបទពិសោធន៍មធ្យម និងអ្នកជិះដែលមានបទពិសោធន៍ច្រើនជាង។ ដល់ពេលហើយដើម្បីចេញដំណើរជាមួយ DirtSurge Expeditions!
+                                </p>
+                                <a href="#" class="text-red-500 font-semibold hover:underline">មើលម៉ូតូ KTM និងគ្រឿងបរិក្ខារ ></a>
+                            </div>
+                            <div class="md:w-1/2">
+                                <img src="https://dirtbikeexpeditions.com/wp-content/uploads/2024/07/dirt-bike-tours098.jpg" alt="KTM Dirtbike" class="w-full h-full object-cover rounded-r-lg">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card 4 -->
+                    <div class="carousel-card-unique">
+                        <div class="flex flex-col md:flex-row items-center bg-black text-white rounded-lg">
+                            <div class="md:w-1/2 p-8">
+                                <h3 class="text-3xl font-bold mb-4">កន្លែងស្នាក់នៅ</h3>
+                                <p class="text-gray-300 mb-6">
+                                    យើងស្គាល់រាល់សណ្ឋាគារល្អៗ និងអចលនទ្រព្យបូទីកនៅក្នុងតំបន់។ អ្នកអាចជឿជាក់បានថា នៅពេលអ្នកធ្វើដំណើរជាមួយយើង អ្នកនឹងមិនចាំបាច់សម្របខ្លួនជាមួយអ្វីដែលតិចជាងបន្ទប់ល្អឥតខ្ចោះនោះទេ។
+                                </p>
+                                <a href="#" class="text-red-500 font-semibold hover:underline">មើលម៉ូតូ KTM និងគ្រឿងបរិក្ខារ ></a>
+                            </div>
+                            <div class="md:w-1/2">
+                                <img src="https://dirtbikeexpeditions.com/wp-content/uploads/2024/07/hotel-kampot98.jpg" alt="KTM Dirtbike" class="w-full h-full object-cover rounded-r-lg">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card 5 -->
+                    <div class="carousel-card-unique">
+                        <div class="flex flex-col md:flex-row items-center bg-black text-white rounded-lg">
+                            <div class="md:w-1/2 p-8">
+                                <h3 class="text-3xl font-bold mb-4">ការជិះប្រកបដោយចីរភាព</h3>
+                                <p class="text-gray-300 mb-6">
+                                    ដំណើរកម្សាន្ត Dirt Bike របស់យើងផ្តោតលើការធ្វើដំណើរដោយទទួលខុសត្រូវ សង្កត់ធ្ងន់លើចីរភាព ការគោរពវប្បធម៌ និងការអភិរក្សបរិស្ថាន។ អ្នកជិះអនុវត្តតាមការអនុវត្តមេត្រីបរិស្ថាន ដូចជាការកាត់បន្ថយផលប៉ះពាល់របស់ពួកគេដោយស្នាក់នៅលើផ្លូវដែលបានកំណត់ និងជៀសវាងតំបន់ងាយរងគ្រោះ។ យើងសហការជាមួយសហគមន៍មូលដ្ឋាន ដោយធានាថាអត្ថប្រយោជន៍នៃទេសចរណ៍ត្រូវបានចែករំលែក ហើយបេតិកភណ្ឌវប្បធម៌ត្រូវបានថែរក្សា។ អ្នកចូលរួមរៀនគោរពទំនៀមទម្លាប់មូលដ្ឋាន សត្វព្រៃ និងជម្រកធម្មជាតិ។
+                                </p>
+                                <a href="#" class="text-red-500 font-semibold hover:underline">មើលម៉ូតូ KTM និងគ្រឿងបរិក្ខារ ></a>
+                            </div>
+                            <div class="md:w-1/2">
+                                <img src="https://dirtbikeexpeditions.com/wp-content/uploads/2024/07/dirt-bike-trips.jpg" alt="KTM Dirtbike" class="w-full h-full object-cover rounded-r-lg">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Navigation Arrows -->
+                <div class="prev-arrow-unique carousel-arrow-unique" onclick="moveCarouselUnique(-1)">&#10094;</div>
+                <div class="next-arrow-unique carousel-arrow-unique" onclick="moveCarouselUnique(1)">&#10095;</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Explore Famous Locations -->
+    <section class="py-16">
+        <div class="container mx-auto px-6">
+        <header class="text-center mb-12">
+            <h2 class="text-3xl font-bold mb-4">គោលដៅ Dirt Bike កំពូលៗនៅខេត្តកំពង់ធំ</h2>
+            <p class="text-gray-600 max-w-2xl mx-auto">
+            ខេត្តកំពង់ធំផ្តល់នូវបទពិសោធន៍ជិះម៉ូតូឌឺតចម្រុះ ចាប់ពីផ្លូវលំប្រកបដោយបញ្ហាប្រឈម រហូតដល់ផ្លូវទេសភាពស្រស់ស្អាតតាមព្រៃឈើ និងប្រាសាទបុរាណ។ ខាងក្រោមនេះគឺជាកន្លែងនិងដំណើរកម្សាន្តល្អបំផុតខ្លះៗដែលគួរពិចារណា៖
+            </p>
+        </header>
+    
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Tour Card -->
+            <article class="bg-white shadow-lg rounded-lg overflow-hidden">
+            <div class="relative">
+                <img src="https://th.bing.com/th/id/OIP.8fZiee9Ikc5AJ5qS3XUfqQHaEm?rs=1&pid=ImgDetMain" alt="Sambor Prei Kuk temple complex" class="w-full h-48 object-cover">
+                <div class="absolute top-4 left-4 flex items-center space-x-2">
+                <span class="text-yellow-400">★ 5.0</span>
+                <span class="text-gray-600" aria-label="Add to favorites">❤️</span>
+                </div>
+            </div>
+            <div class="p-6">
+                <h3 class="text-lg font-bold mb-2">សំបូរព្រៃគុក</h3>
+                <p class="text-gray-600 font-semibold mb-4">រយៈពេល៖ ៨ ម៉ោង | កម្រិត៖ ២-៤</p>
+                <p class="text-gray-600 mb-4">
+                តំបន់បេតិកភណ្ឌពិភពលោក UNESCO នេះមានប្រាសាទមុនសម័យអង្គរដែលស្ថិតនៅក្នុងព្រៃ។ ផ្លូវលំជុំវិញផ្តល់នូវការរុករកវប្បធម៌និងផ្សងព្រេងតាមផ្លូវលំចម្រុះគ្នា។
+                </p>
+                <div class="flex justify-between items-center">
+                <span class="text-blue-600 font-bold">$៣៦០</span>
+                <a href="/tours/sambor-prei-kuk" class="bg-blue-600 text-white px-4 py-2 rounded-full hover:bg-blue-700" aria-label="View details for Sambor Prei Kuk tour">មើលបន្ថែម</a>
+                </div>
+            </div>
+            </article>
+    
+            <!-- Tour Card -->
+            <article class="bg-white shadow-lg rounded-lg overflow-hidden">
+            <div class="relative">
+                <img src="https://i.pinimg.com/736x/3d/8e/23/3d8e2363446d59146df9d48c6c7f7d88.jpg" alt="Phnom Santuk mountain" class="w-full h-48 object-cover">
+                <div class="absolute top-4 left-4 flex items-center space-x-2">
+                <span class="text-yellow-400">★ 5.0</span>
+                <span class="text-gray-600" aria-label="Add to favorites">❤️</span>
+                </div>
+            </div>
+            <div class="p-6">
+                <h3 class="text-lg font-bold mb-2">ភ្នំសន្ទុក</h3>
+                <p class="text-gray-600 font-semibold mb-4">រយៈពេល៖ ៨ ម៉ោង | កម្រិត៖ ២-៤</p>
+                <p class="text-gray-600 mb-4">
+                ភ្នំពិសិដ្ឋដែលមានទិដ្ឋភាពគ្រប់ទិសទី ភ្នំសន្ទុកអាចចូលទៅដល់តាមផ្លូវថ្មដែលមានរូបចម្លាក់ជាច្រើននៅសងខាង។ ការឡើងភ្នំផ្តល់ទាំងបញ្ហាប្រឈមផ្នែកភូមិសាស្ត្រ និងការយល់ដឹងអំពីវប្បធម៌។
+                </p>
+                <div class="flex justify-between items-center">
+                <span class="text-blue-600 font-bold">$៣៦០</span>
+                <a href="/tours/phnom-santuk" class="bg-blue-600 text-white px-4 py-2 rounded-full hover:bg-blue-700" aria-label="View details for Phnom Santuk tour">មើលបន្ថែម</a>
+                </div>
+            </div>
+            </article>
+    
+            <!-- Tour Card -->
+            <article class="bg-white shadow-lg rounded-lg overflow-hidden">
+            <div class="relative">
+                <img src="https://i.pinimg.com/736x/0b/0d/98/0b0d9805a6eaed4a36e2d9d4917285d9.jpg" alt="Prey Lang Wildlife Sanctuary" class="w-full h-48 object-cover">
+                <div class="absolute top-4 left-4 flex items-center space-x-2">
+                <span class="text-yellow-400">★ 5.0</span>
+                <span class="text-gray-600" aria-label="Add to favorites">❤️</span>
+                </div>
+            </div>
+            <div class="p-6">
+                <h3 class="text-lg font-bold mb-2">ដែនជម្រកសត្វព្រៃព្រៃឡង់</h3>
+                <p class="text-gray-600 font-semibold mb-4">រយៈពេល៖ ៨ �ម៉ោង | កម្រិត៖ ២-៤</p>
+                <p class="text-gray-600 mb-4">
+                ជាព្រៃសៀវផាត់តំបន់ទំនាបចុងក្រោយមួយក្នុងចំណោមព្រៃចុងក្រោយនៅអាស៊ីអាគ្នេយ៍ ព្រៃឡង់ផ្តល់នូវផ្លូវព្រៃក្រាស់ៗឯកោដែលសមរម្យសម្រាប់អ្នកជិះដែលមានបទពិសោធន៍ដែលកំពុងស្វែងរកផ្សងព្រេងដ៏កម្រ។
+                </p>
+                <div class="flex justify-between items-center">
+                <span class="text-blue-600 font-bold">$៣៦០</span>
+                <a href="/tours/prey-lang" class="bg-blue-600 text-white px-4 py-2 rounded-full hover:bg-blue-700" aria-label="View details for Prey Lang Wildlife Sanctuary tour">មើលបន្ថែម</a>
+                </div>
+            </div>
+            </article>
+    
+            <!-- Tour Card -->
+            <article class="bg-white shadow-lg rounded-lg overflow-hidden">
+            <div class="relative">
+                <img src="https://images.sbs.com.au/dims4/default/c639b40/2147483647/strip/true/crop/1436x808+2+0/resize/1280x720!/quality/90/?url=http:%2F%2Fsbs-au-brightspot.s3.amazonaws.com%2F4c%2Fdf%2Faf5dddc644e083bdcce85980faa0%2F308950339-2230566150450562-1310881734320587591-n.jpg" alt="Stung Sen Wildlife Sanctuary" class="w-full h-48 object-cover">
+                <div class="absolute top-4 left-4 flex items-center space-x-2">
+                <span class="text-yellow-400">★ 5.0</span>
+                <span class="text-gray-600" aria-label="Add to favorites">❤️</span>
+                </div>
+            </div>
+            <div class="p-6">
+                <h3 class="text-lg font-bold mb-2">ដែនជម្រកសត្វព្រៃស្ទឹងសែន</h3>
+                <p class="text-gray-600 font-semibold mb-4">រយៈពេល៖ ៨ ម៉ោង | កម្រិត៖ ២-៤</p>
+                <p class="text-gray-600 mb-4">
+                ស្ថិតនៅជិតចុងអាគ្នេយ៍បឹងទន្លេសាប ដែនជម្រកនេះមានព្រៃរុក្ខជាតិប្រចាំរដូវទូលាយនិងដីសើម ដែលផ្តល់នូវភូមិសាស្ត្រចម្រុះសម្រាប់ការជិះម៉ូតូឌឺត។
+                </p>
+                <div class="flex justify-between items-center">
+                <span class="text-blue-600 font-bold">$៣៦០</span>
+                <a href="/tours/stung-sen" class="bg-blue-600 text-white px-4 py-2 rounded-full hover:bg-blue-700" aria-label="View details for Stung Sen Wildlife Sanctuary tour">មើលបន្ថែម</a>
+                </div>
+            </div>
+            </article>
+    
+            <!-- Tour Card -->
+            <article class="bg-white shadow-lg rounded-lg overflow-hidden">
+            <div class="relative">
+                <img src="https://i.ytimg.com/vi/bPWbIqyMZuI/maxresdefault.jpg" alt="Tonle Chhmar Lake" class="w-full h-48 object-cover">
+                <div class="absolute top-4 left-4 flex items-center space-x-2">
+                <span class="text-yellow-400">★ 5.0</span>
+                <span class="text-gray-600" aria-label="Add to favorites">❤️</span>
+                </div>
+            </div>
+            <div class="p-6">
+                <h3 class="text-lg font-bold mb-2">បឹងទន្លេឆ្មារ</h3>
+                <p class="text-gray-600 font-semibold mb-4">រយៈពេល៖ ៨ ម៉ោង | កម្រិត៖ ២-៤</p>
+                <p class="text-gray-600 mb-4">
+                តំបន់ដីសើមដែលចុះបញ្ជីក្នុង Ramsar នេះរួមមានព្រៃលិចទឹកនិងផ្លូវទឹក ដែលផ្តល់នូវបទពិសោធន៍ផ្លូវលំពិសេសៗ ជាពិសេសក្នុងរដូវប្រាំងពេលដែលផ្លូវលំអាចចូលដល់បានច្រើន។
+                </p>
+                <div class="flex justify-between items-center">
+                <span class="text-blue-600 font-bold">$៣៦០</span>
+                <a href="/tours/tonle-chhmar" class="bg-blue-600 text-white px-4 py-2 rounded-full hover:bg-blue-700" aria-label="View details for Tonle Chhmar Lake tour">មើលបន្ថែម</a>
+                </div>
+            </div>
+            </article>
+    
+            <!-- Tour Card -->
+            <article class="bg-white shadow-lg rounded-lg overflow-hidden">
+            <div class="relative">
+                <img src="https://khmernote.com.kh/wp-content/uploads/2022/09/309861420_523596083099322_3578362114384454690_n.jpg" alt="Stung Chinit River trail" class="w-full h-48 object-cover">
+                <div class="absolute top-4 left-4 flex items-center space-x-2">
+                <span class="text-yellow-400">★ 5.0</span>
+                <span class="text-gray-600" aria-label="Add to favorites">❤️</span>
+                </div>
+            </div>
+            <div class="p-6">
+                <h3 class="text-lg font-bold mb-2">ផ្លូវលំតាមដងស្ទឹងជីនិត</h3>
+                <p class="text-gray-600 font-semibold mb-4">រយៈពេល៖ ៨ ម៉ោង | កម្រិត៖ ២-៤</p>
+                <p class="text-gray-600 mb-4">
+                ផ្លូវលំនេះផ្តល់នូវភូមិសាស្ត្រចម្រុះ រួមទាំងច្រាំងទន្លេ តំបន់ព្រៃឈើ និងទេសភាពជនបទ ដែលផ្តល់ទាំងសម្រស់ស្រស់ស្អាតនិងផ្លូវប្រកបដោយបញ្ហាប្រឈមសម្រាប់អ្នកជិះ។
+                </p>
+                <div class="flex justify-between items-center">
+                <span class="text-blue-600 font-bold">$៣៦០</span>
+                <a href="/tours/stung-chinit" class="bg-blue-600 text-white px-4 py-2 rounded-full hover:bg-blue-700" aria-label="View details for Stung Chinit River trail tour">មើលបន្ថែម</a>
+                </div>
+            </div>
+            </article>
+        </div>
+        </div>
+    </section>
+
+    <!-- ទទួលបទពិសោធន៍ល្អបំផុតជាមួយយើង -->
+    <section class="py-16 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-4">ទទួលបទពិសោធន៍ល្អបំផុតជាមួយយើង</h2>
+            <p class="text-center text-gray-600 mb-12">រឿងដែលមិនអាចបំភ្លេចបានត្រូវបានរៀបចំឡើងសម្រាប់តែអ្នក។</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-white border border-gray-300 rounded-lg flex">
+                    <div class="p-6 flex-1">
+                        <h3 class="text-lg font-semibold text-center mb-2">រំភើបតាមផ្លូវលំដែលមិនទាន់ត្រូវបានអភិវឌ្ឍ</h3>
+                        <p class="text-gray-600 text-center">ជិះកាត់តាមផ្លូវលំព្រៃដ៏ក្រៃលែងបំផុតរបស់កម្ពុជា ចាប់ពីផ្លូវលំក្នុងព្រៃភក់ រហូតដល់ផ្លូវភ្នំដែលពេញដោយថ្ម។</p>
+                    </div>
+                    <img src="https://i.pinimg.com/736x/16/4d/73/164d7390a10bf7e498487ed75bbed1cd.jpg" alt="Experience" class="w-1/2 object-cover rounded-r-lg">
+                </div>
+                <div class="bg-white border border-gray-300 rounded-lg flex">
+                    <div class="p-6 flex-1">
+                        <h3 class="text-lg font-semibold text-center mb-2">រកឃើញប្រាសាទលាក់កំបាំង និងភូមិមូលដ្ឋាន</h3>
+                        <p class="text-gray-600 text-center">ឆ្លងផុតពីផ្លូវទេសចរណ៍ ហើយស្វែងរកប្រាសាទបុរាណ និងសហគមន៍ជនបទដែលអាចចូលដល់បានតែតាមរយៈម៉ូតូឌឺតប៉ុណ្ណោះ។</p>
+                    </div>
+                    <img src="https://i.pinimg.com/736x/0e/f9/2b/0ef92b230b7b53cf52dbc121e6f4a2d2.jpg" alt="Experience" class="w-1/2 object-cover rounded-r-lg">
+                </div>
+                <div class="bg-white border border-gray-300 rounded-lg flex">
+                    <div class="p-6 flex-1">
+                        <h3 class="text-lg font-semibold text-center mb-2">មគ្គុទេសក៍ជំនាញ និងសុវត្ថិភាពជាអាទិភាព</h3>
+                        <p class="text-gray-600 text-center">មគ្គុទេសក៍មូលដ្ឋានដែលមានបទពិសោធរបស់យើងធានានូវផ្សងព្រេងប្រកបដោយសុវត្ថិភាព និងភាពរំភើប ដែលត្រូវបានកែសម្រួលតាមកម្រិតជំនាញរបស់អ្នក។</p>
+                    </div>
+                    <img src="https://i.pinimg.com/736x/b8/68/34/b86834c21462a84227cdff685fac099d.jpg" alt="Experience" class="w-1/2 object-cover rounded-r-lg">
+                </div>
+                <div class="bg-white border border-gray-300 rounded-lg flex">
+                    <div class="p-6 flex-1">
+                        <h3 class="text-lg font-semibold text-center mb-2">កញ្ចប់ផ្សងព្រេងពេញលេញ</h3>
+                        <p class="text-gray-600 text-center">យើងផ្តល់ជូននូវម៉ូតូគុណភាពខ្ពស់ គ្រឿងបរិក្ខារ និងការគាំទ្រ ដើម្បីឱ្យអ្នកអាចផ្តោតអារម្មណ៍លើការរីករាយនឹងការជិះ។</p>
+                    </div>
+                    <img src="https://i.pinimg.com/736x/c7/7f/32/c77f3279e8f4aed08e4be16c3ae44fe4.jpg" alt="Experience" class="w-1/2 object-cover rounded-r-lg">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Expertise in Travel -->
+    <section class="py-16">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row">
+            <div class="md:w-1/2 p-6">
+                <h2 class="text-3xl font-bold mb-4">ជំនាញរបស់យើងក្នុងការធ្វើដំណើរ</h2>
+                <p class="text-gray-600 mb-6">ដោយមានបទពិសោធន៍រាប់ឆ្នាំ យើងបង្កើតដំណើរផ្សងព្រេងដែលបំផុសគំនិត។</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="bg-white border border-gray-300 rounded-lg p-4">
+                        <h3 class="text-lg font-semibold">បទពិសោធន៍ជិះម៉ូតូតាមផ្លូវលំអស់រយៈពេលច្រើនឆ្នាំ</h3>
+                        <p class="text-gray-600">យើងបាននាំអ្នកជិះម៉ូតូតាមភូមិសាស្ត្រដ៏លំបាកបំផុតនិងមានទេសភាពស្រស់ស្អាតបំផុតរបស់ប្រទេសកម្ពុជាអស់រយៈពេលជាង១០ឆ្នាំមកហើយ ដោយបានគ្រប់គ្រងផ្លូវលំនិងផ្លូវកោងគ្រប់ចែក។</p>
+                    </div>
+                    <div class="bg-white border border-gray-300 rounded-lg p-4">
+                        <h3 class="text-lg font-semibold">ចំណេះដឹងមូលដ្ឋាន ស្តង់ដារអន្តរជាតិ</h3>
+                        <p class="text-gray-600">មគ្គុទ្ទេសក៍កើតនៅកម្ពុជារបស់យើងស្គាល់ទឹកដីនេះដោយចិត្ត - រាល់ផ្លូវកាត់ ប្រាសាទសម្ងាត់ និងភូមិនានា - ជាមួយនឹងសុវត្ថិភាពនិងសេវាកម្មដែលឆ្លើយតបទៅនឹងការរំពឹងទុកអន្តរជាតិ។</p>
+                    </div>
+                    <div class="bg-white border border-gray-300 rounded-lg p-4">
+                        <h3 class="text-lg font-semibold">ដំណើរកម្សាន្តដែលកែសម្រួលសម្រាប់អ្នកជិះគ្រប់រូប</h3>
+                        <p class="text-gray-600">ចាប់ពីអ្នកផ្សងព្រេងលើកដំបូងរហូតដល់អ្នកជិះអេនឌូរ៉ូដែលមានបទពិសោធន៍ យើងកែសម្រួលដំណើរកម្សាន្តនីមួយៗតាមជំនាញ ចំណាប់អារម្មណ៍ និងកម្រិតផាសុកភាពរបស់អ្នក។</p>
+                    </div>
+                    <div class="bg-white border border-gray-300 rounded-lg p-4">
+                        <h3 class="text-lg font-semibold">ម៉ូតូកម្រិតខ្ពស់និងការថែទាំ</h3>
+                        <p class="text-gray-600">យើងផ្តល់ជូននូវម៉ូតូឌឺតដែលមានសមត្ថភាពខ្ពស់ ដែលត្រូវបានថែទាំដោយជំនាញបន្ទាប់ពីការជិះម្តងៗ ដើម្បីធានានូវសុវត្ថិភាព កម្លាំង និងការផ្សងព្រេងដោយរលូន។</p>
+                    </div>
+                </div>
+            </div>
+            <div class="md:w-1/2">
+                <img src="https://i.pinimg.com/736x/09/a0/bd/09a0bda2a67d510023072c156a3d10e5.jpg" alt="Expertise" class="w-full h-full object-cover rounded-lg">
+            </div>
+        </div>
+    </section>
+
+    <!-- Customer Feedback -->
+    <section class="py-16 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-4">មតិវាយតម្លៃរបស់អតិថិជន</h2>
+            <p class="text-center text-gray-600 mb-12">Hear from our happy travelers.</p>
+
+            <div id="feedbackList" class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                <!-- All cards will go here via JS -->
+            </div>
+
+            <div class="text-center mt-8">
+                <button id="loadMoreBtn" class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition">
+                    បង្ហាញបន្ថែម
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="py-16">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl font-bold mb-4">ទទួលព្រឹត្តិបត្ររបស់យើង</h2>
+            <p class="text-gray-600 mb-6">ចុះឈ្មោះដើម្បីទទួលបានព័ត៌មានថ្មីៗនិងការធ្វើបច្ចុប្បន្នភាព។</p>
+            <div class="flex justify-center">
+                <input type="email" placeholder="បញ្ចូលអ៊ីមែលរបស់អ្នក" class="border border-gray-300 rounded-l-lg p-3 w-64 focus:outline-none">
+                <button class="bg-blue-600 text-white px-6 py-3 rounded-r-lg hover:bg-blue-700">ចុះឈ្មោះ</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-gray-100 py-12 px-6 md:px-16">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-12">
+          
+          <!-- Left Text Content -->
+          <div class="md:w-1/2">
+            <h2 class="text-3xl font-bold mb-4">ចាប់ផ្តើមរៀបចំដំណើររបស់អ្នក!</h2>
+            <p class="text-gray-700 leading-relaxed">
+                ក្រុមអ្នកជំនាញរបស់យើងមានបទពិសោធន៍និងចំណេះដឹងដើម្បីជួយអ្នករៀបចំដំណើរផ្សងព្រេងម៉ូតូឌឺតដ៏អស្ចារ្យបំផុតក្នុងជីវិតរបស់អ្នក។ គ្រាន់តែប្រាប់យើងថាអ្នកចង់បានដំណើរកម្សាន្តដ៏ស្រមៃរបស់អ្នកបែបណា ហើយយើងនឹងធ្វើកិច្ចការដែលនៅសល់!
+            </p>
+          </div>
+      
+          <!-- Right Contact Info -->
+          <div class="md:w-1/2 border-l border-gray-300 pl-6 space-y-6">
+            
+            <!-- Phone -->
+            <div class="flex items-center gap-4">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.6a1 1 0 01.95.684l1.516 4.546a1 1 0 01-.216.95L9.414 10.586a16.001 16.001 0 006 6l1.406-1.406a1 1 0 01.95-.216l4.546 1.516A1 1 0 0121 17.4V21a2 2 0 01-2 2h-1C9.716 23 1 14.284 1 3V2a2 2 0 012-2z" />
+              </svg>
+              <div>
+                <p class="text-sm text-gray-500">ទូរស័ព្ទមកយើងតាមលេខ</p>
+                <p class="text-red-600 font-semibold text-lg">+៨៥៥ (០) ១៦ ៧០០ ៨៩៦</p>
+              </div>
+            </div>
+      
+            <!-- Email -->
+            <div class="flex items-center gap-4">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12H8m8 0l-4 4m0-4l-4-4m13-2H5a2 2 0 00-2 2v10a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2z" />
+              </svg>
+              <div>
+                <p class="text-red-600 font-semibold text-lg">info@dirtsurgeexpeditions.com</p>
+              </div>
+            </div>
+      
+          </div>
+        </div>
+    </section>      
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-16">
+        <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div>
+                <img src="../images/logo.png" alt="Logo" class="h-13 mb-4">
+                <p class="text-gray-400 mb-4">DirtSurge Expeditions ផ្តល់ជូននូវដំណើរផ្សងព្រេងដែលមិនអាចបំភ្លេចបានទូទាំងពិភពលោក។</p>
+                <div class="flex space-x-4">
+                    <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
+                    <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold mb-4">ដំណើរផ្សងព្រេង</h3>
+                <ul class="space-y-2">
+                    <li><a href="#" class="text-gray-400 hover:text-white">សំបូរព្រៃគុក</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white">ភ្នំសន្ទុក</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white">ដែនជម្រកសត្វព្រៃព្រៃឡង់</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white">ដែនជម្រកសត្វព្រៃស្ទឹងសែន</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white">បឹងទន្លេឆ្មារ</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold mb-4">ក្រុមហ៊ុន</h3>
+                <ul class="space-y-2">
+                    <li><a href="#" class="text-gray-400 hover:text-white">ម៉ូតូនិងគ្រឿងបរិក្ខារ</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white">ហេតុអ្វីជ្រើសយើង</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white">អំពីយើង</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white">ការវាយតម្លៃ</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white">ទំនាក់ទំនង</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white">ដំណើរផ្សងព្រេងទាំងអស់</a></li>
+
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold mb-4">ទំនាក់ទំនង</h3>
+                <p class="text-gray-400 mb-4">យើងទទួលការបង់ប្រាក់តាម៖</p>
+                <img src="../images/payment.png" alt="Payment" sizes="70px" class="mb-4">
+                <p class="text-gray-400">ផ្លូវលេខ ៦A, ខេត្តកំពង់ធំ</p>
+                <p class="text-gray-400">ទូរស័ព្ទ៖ +៨៥៥ ១៦ ៧០០ ៨៩៦</p>
+                <p class="text-gray-400">WhatsApp៖ +៨៥៥ ១៦ ៧០០ ៨៩៦</p>
+                <p class="text-gray-400">info@dirtsurgeexpeditions.com</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>
