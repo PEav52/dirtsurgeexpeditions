@@ -110,44 +110,56 @@
     <!-- Navigation -->
     <nav class="bg-white shadow-md py-4">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center">
-                <!-- Logo -->
-                <div class="flex items-center">
-                    <img src="./images/logo.png" alt="Logo" class="h-16"> <!-- Changed from h-13 to h-16 -->
-                </div>
-
-                <!-- Desktop Menu -->
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="index.html" class="text-gray-700 hover:text-blue-600 transition duration-300">Home</a>
-                    <a href="tours.html" class="text-gray-700 hover:text-blue-600 transition duration-300">Tours</a>
-                    <a href="our-bike.html" class="text-gray-700 hover:text-blue-600 transition duration-300">Bike & Gear</a>
-                    <a href="about.html" class="text-gray-700 hover:text-blue-600 transition duration-300">About</a>
-                    <a href="why-us.html" class="text-gray-700 hover:text-blue-600 transition duration-300">Why us</a>
-                    <a href="contact.html" class="text-gray-700 hover:text-blue-600 transition duration-300">Contact</a>
-                </div>
-
-                <!-- Hamburger Menu Button -->
-                <div class="md:hidden">
-                    <button id="menu-toggle" class="text-gray-700 focus:outline-none">
-                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path id="hamburger" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                            <path id="close" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                        </svg>
-                    </button>
-                </div>
+        <div class="flex justify-between items-center">
+            <!-- Logo -->
+            <div class="flex items-center">
+            <img src="./images/logo.png" alt="Company Logo" class="h-16">
             </div>
-
-            <!-- Mobile Menu -->
-            <div id="mobile-menu" class="md:hidden hidden">
-                <div class="pt-2 pb-3 space-y-1">
-                    <a href="index.html" class="block px-3 py-2 text-gray-700 hover:text-blue-600 hover:bg-gray-50">Home</a>
-                    <a href="tours.html" class="block px-3 py-2 text-gray-700 hover:text-blue-600 hover:bg-gray-50">Tours</a>
-                    <a href="our-bike.html" class="block px-3 py-2 text-gray-700 hover:text-blue-600 hover:bg-gray-50">Bike & Gear</a>
-                    <a href="about.html" class="block px-3 py-2 text-gray-700 hover:text-blue-600 hover:bg-gray-50">About</a>
-                    <a href="why-us.html" class="block px-3 py-2 text-gray-700 hover:text-blue-600 hover:bg-gray-50">Why us</a>
-                    <a href="contact.html" class="block px-3 py-2 text-gray-700 hover:text-blue-600 hover:bg-gray-50">Contact</a>
-                </div>
+    
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center space-x-8">
+            <a href="index.html" class="text-gray-700 font-bold hover:text-red-600 transition duration-300">Home</a>
+            <a href="tours.html" class="text-gray-700 font-bold hover:text-red-600 transition duration-300">Tours</a>
+            <a href="our-bike.html" class="text-gray-700 font-bold hover:text-red-600 transition duration-300">Bike & Gear</a>
+            <a href="about.html" class="text-gray-700 font-bold hover:text-red-600 transition duration-300">About</a>
+            <a href="why-us.html" class="text-gray-700 font-bold hover:text-red-600 transition duration-300">Why us</a>
+            <a href="contact.html" class="text-gray-700 font-bold hover:text-red-600 transition duration-300">Contact</a>
+            <!-- Language Switcher Links (Desktop) -->
+            <div class="flex items-center space-x-2">
+                <a href="index.html" class="text-gray-700 hover:text-red-600 transition duration-300" aria-label="Switch to English" lang="en">EN</a>
+                <span class="text-gray-700">|</span>
+                <a href="./kh/index-kh.html" class="text-gray-700 hover:text-red-600 transition duration-300" aria-label="Switch to Khmer" lang="km">KH</a>
             </div>
+            </div>
+    
+            <!-- Hamburger Menu Button and Mobile Language Switcher -->
+            <div class="md:hidden flex items-center space-x-4">
+            <!-- Language Switcher Links (Mobile) -->
+            <div class="flex items-center space-x-2">
+                <a href="index.html" class="text-gray-700 hover:text-red-600 transition duration-300" aria-label="Switch to English" lang="en">EN</a>
+                <span class="text-gray-700">|</span>
+                <a href="./kh/index-kh.html" class="text-gray-700 hover:text-red-600 transition duration-300" aria-label="Switch to Khmer" lang="km">KH</a>
+            </div>
+            <button id="menu-toggle" class="text-gray-700 focus:outline-none" aria-label="Toggle mobile menu">
+                <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path id="hamburger" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                <path id="close" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+            </div>
+        </div>
+    
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden hidden">
+            <div class="pt-2 pb-3 space-y-1">
+            <a href="index.html" class="block px-3 py-2 text-gray-700 font-bold hover:text-red-600 hover:bg-gray-50">Home</a>
+            <a href="tours.html" class="block px-3 py-2 text-gray-700 font-bold hover:text-red-600 hover:bg-gray-50">Tours</a>
+            <a href="our-bike.html" class="block px-3 py-2 text-gray-700 font-bold hover:text-red-600 hover:bg-gray-50">Bike & Gear</a>
+            <a href="about.html" class="block px-3 py-2 text-gray-700 font-bold hover:text-red-600 hover:bg-gray-50">About</a>
+            <a href="why-us.html" class="block px-3 py-2 text-gray-700 font-bold hover:text-red-600 hover:bg-gray-50">Why us</a>
+            <a href="contact.html" class="block px-3 py-2 text-gray-700 font-bold hover:text-red-600 hover:bg-gray-50">Contact</a>
+            </div>
+        </div>
         </div>
     </nav>
 
