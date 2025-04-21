@@ -201,7 +201,11 @@ const feedbackList = document.getElementById("feedbackList");
 const loadMoreBtn = document.getElementById("loadMoreBtn");
 
 // let currentIndex = 0; // Fixed: Added missing currentIndex declaration
+<<<<<<< HEAD
 const itemsPerPage = 3;
+=======
+const itemsPerPage = 6;
+>>>>>>> 025a804a0ad48ea9998756acdd553dd3d8f4db30
 
 function createCard({ name, quote, rating, date, source, image }) {
     return `
