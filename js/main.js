@@ -264,3 +264,15 @@ loadMoreBtn.addEventListener("click", loadFeedbacks);
 
 // Feedback section end
 
+// Tours webpage 
+
+// Toggle Mobile Menu
+const menuToggleTour = document.getElementById('menu-toggle-tour');
+const mobileMenuTour = document.getElementById('mobile-menu-tour');
+
+menuToggleTour.addEventListener('click', () => {
+    mobileMenuTour.classList.toggle('hidden');
+});
+
+// end of Tours webpage
+
