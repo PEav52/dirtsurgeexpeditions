@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Website</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Or for .png -->
+    <link rel="icon" href="./images/logo.png" type="image/png">
+    <style>
+        .h-96 {
+            height: 24rem; /* 384px */
+        }
+
+        /* Increase height for PC view (screens >= 768px) */
+        @media (min-width: 768px) {
+            .h-96 {
+                height: 32rem; /* 576px, adjust as needed */
+            }
+        }
+
+        section {
+            background-color: #fff;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        @media (max-width: 767px) {
+            .container {
+                flex-direction: column;
+            }
+            .md\:w-1\/2 {
+                width: 100%;
+            }
+        }
+
+        .underline {
+        transition: all 0.3s ease;
+        }
+    </style>
+</head>
+<body class="font-sans">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md py-4">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center">
+            <!-- Logo -->
+            <div class="flex items-center">
+            <img src="./images/logo.png" alt="Company Logo" class="h-16">
+            </div>
+    
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center space-x-8">
+            <a href="index.html" class="text-gray-700 font-bold hover:text-red-600 transition duration-300">Home</a>
+            <a href="tours.html" class="text-gray-700 font-bold hover:text-red-600 transition duration-300">Tours</a>
+            <a href="our-bike.html" class="text-gray-700 font-bold hover:text-red-600 transition duration-300">Bike & Gear</a>
+            <a href="about.html" class="text-gray-700 font-bold hover:text-red-600 transition duration-300">About</a>
+            <a href="why-us.html" class="text-gray-700 font-bold hover:text-red-600 transition duration-300">Why us</a>
+            <a href="contact.html" class="text-gray-700 font-bold hover:text-red-600 transition duration-300">Contact</a>
+            <!-- Language Switcher Links (Desktop) -->
+            <div class="flex items-center space-x-2">
+                <a href="index.html" class="text-gray-700 hover:text-red-600 transition duration-300" aria-label="Switch to English" lang="en">EN</a>
+                <span class="text-gray-700">|</span>
+                <a href="./kh/index-kh.html" class="text-gray-700 hover:text-red-600 transition duration-300" aria-label="Switch to Khmer" lang="km">KH</a>
+            </div>
+            </div>
+    
+            <!-- Hamburger Menu Button and Mobile Language Switcher -->
+            <div class="md:hidden flex items-center space-x-4">
+            <!-- Language Switcher Links (Mobile) -->
+            <div class="flex items-center space-x-2">
+                <a href="index.html" class="text-gray-700 hover:text-red-600 transition duration-300" aria-label="Switch to English" lang="en">EN</a>
+                <span class="text-gray-700">|</span>
+                <a href="./kh/index-kh.html" class="text-gray-700 hover:text-red-600 transition duration-300" aria-label="Switch to Khmer" lang="km">KH</a>
+            </div>
+            <button id="menu-toggle" class="text-gray-700 focus:outline-none" aria-label="Toggle mobile menu">
+                <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path id="hamburger" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                <path id="close" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+            </div>
+        </div>
+    
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden hidden">
+            <div class="pt-2 pb-3 space-y-1">
+            <a href="index.html" class="block px-3 py-2 text-gray-700 font-bold hover:text-red-600 hover:bg-gray-50">Home</a>
+            <a href="tours.html" class="block px-3 py-2 text-gray-700 font-bold hover:text-red-600 hover:bg-gray-50">Tours</a>
+            <a href="our-bike.html" class="block px-3 py-2 text-gray-700 font-bold hover:text-red-600 hover:bg-gray-50">Bike & Gear</a>
+            <a href="about.html" class="block px-3 py-2 text-gray-700 font-bold hover:text-red-600 hover:bg-gray-50">About</a>
+            <a href="why-us.html" class="block px-3 py-2 text-gray-700 font-bold hover:text-red-600 hover:bg-gray-50">Why us</a>
+            <a href="contact.html" class="block px-3 py-2 text-gray-700 font-bold hover:text-red-600 hover:bg-gray-50">Contact</a>
+            </div>
+        </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative h-96 overflow-hidden">
+        <div class="w-full h-full bg-cover bg-center" style="background-image: url('https://i.pinimg.com/736x/21/65/f9/2165f93bc1dce794a8e478acee85625d.jpg');">
+            <div class="absolute inset-0 bg-black bg-opacity-30"></div>
+            <div class="relative h-full flex items-end justify-center text-center text-white pb-12">
+                <div>
+                    <h1 class="text-4xl font-bold mb-4">Tours</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Header Section -->
+    <section class="bg-black text-white py-10 px-5 md:px-20">
+        <h1 class="text-4xl md:text-5xl font-bold mb-10">JUNGLE TEMPLES ENDURO TOUR</h1>
+        <div class="grid grid-cols-1 md:grid-cols-5 gap-8">
+            <!-- Cards Section (4 columns) -->
+            <div class="md:col-span-3">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Row 1: Destination and Trip Type -->
+                <!-- Destination Card -->
+                <div class="flex items-center space-x-4 bg-gray-900 p-4 rounded-lg">
+                    <svg width="64px" height="64px" viewBox="0 0 1024 1024" class="icon" version="1.1" xmlns="http://www.w3.org/2000/svg" fill="#002aff"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M513.2 56.6c-164 0-296.9 131-296.9 292.6 0 50.2 12.8 97.4 35.4 138.6 37.7 69 166.6 266.1 228.3 359.6 29.8 27.9 59 6.4 66.5 0 61.3-93.3 189.3-289.6 227.3-357.6 23.3-41.7 36.5-89.7 36.5-140.6-0.2-161.6-133.1-292.6-297.1-292.6z m214.2 413.6c-36.1 61-163.5 264.3-202.7 326.8-8.2 2.9-15.9 2.5-23 0-38.9-62.3-165.5-264.9-201.8-325.2-21.7-36.1-34.2-78.2-34.2-123.1 0-134 110.8-242.7 247.4-242.7s247.4 108.6 247.4 242.7c0.1 44.3-12 85.8-33.1 121.5z" fill="#002aff"></path><path d="M513.2 477.7c-70.8 0-128.4-57.6-128.4-128.4s57.6-128.4 128.4-128.4 128.4 57.6 128.4 128.4S584 477.7 513.2 477.7z m0-208.7c-44.3 0-80.3 36-80.3 80.3s36 80.3 80.3 80.3 80.3-36 80.3-80.3-36-80.3-80.3-80.3zM511.9 969.6c-163.4 0-286.6-59.6-286.6-138.7 0-46.1 42.4-87.2 116.4-112.7 11.5-4 24.1 2.1 28 13.6 4 11.5-2.1 24.1-13.6 28-53.5 18.5-86.7 45.7-86.7 71.1 0 44.7 99.6 94.6 242.5 94.6s242.5-49.9 242.5-94.6c0-25.4-33.3-52.6-86.8-71.1-11.5-4-17.6-16.5-13.6-28 4-11.5 16.5-17.6 28-13.6 74 25.5 116.5 66.7 116.5 112.8 0 78.9-123.2 138.6-286.6 138.6z" fill="#002aff"></path></g></svg>                    
+                    <div>
+                    <p class="text-sm uppercase">Destination</p>
+                    <p class="text-lg">Cambodia</p>
+                    </div>
+                </div>
+                <!-- Trip Type Card -->
+                <div class="flex items-center space-x-4 bg-gray-900 p-4 rounded-lg">
+                    <svg height="64px" width="64px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 511.972 511.972" xml:space="preserve" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path style="fill:#002aff;" d="M377.021,485.974c-1.719,0-3.453-0.422-5.016-1.25L54.725,315.685 c-2.078-1.109-3.734-2.875-4.703-5.03c-4.344-9.641-41.42-96.511-8.437-178.163c18.593-46.013,47.138-80.761,84.823-103.291 C158.828,9.827,196.905,0,239.558,0c38.639,0,80.277,8.562,117.229,24.107c34.529,14.53,62.747,34.295,77.401,54.216 c23.812,32.343,39.279,70.622,46.014,113.76c5.828,37.451,4.812,78.715-2.969,119.322c-14.812,77.386-52.825,146.898-94.572,172.944 C380.943,485.427,378.974,485.974,377.021,485.974z"></path> <path style="fill:#5D9CEC;" d="M476.156,171.177c-11.124-1.625-45.56-6.843-86.87-15.046 c-66.153-13.171-119.618-27.982-154.648-42.873c-3.25-1.374-6.984-1.062-9.953,0.859l-57.122,36.92 c-3.031,1.953-4.875,5.312-4.89,8.922c0,2.547-0.031,62.716,15.155,93.886c5.343,10.983,27.311,28.17,149.695,72.434 c64.466,23.312,128.104,43.545,133.119,45.123c6.952-18.969,12.607-39.201,16.592-59.997c7.781-40.607,8.797-81.871,2.969-119.322 C479.093,184.974,477.734,178.006,476.156,171.177z"></path> <circle style="fill:#656D78;" cx="213.826" cy="159.986" r="40.482"></circle> <g> <path style="fill:#434A54;" d="M213.826,108.853c-28.202,0-51.153,22.936-51.153,51.138c0,28.201,22.952,51.138,51.153,51.138 s51.138-22.937,51.138-51.138C264.965,131.789,242.028,108.853,213.826,108.853z M213.826,189.801 c-16.437,0-29.811-13.374-29.811-29.811s13.375-29.811,29.811-29.811s29.811,13.374,29.811,29.811S230.263,189.801,213.826,189.801 z"></path> <path style="fill:#434A54;" d="M221.373,167.538c-4.171,4.155-10.921,4.155-15.093,0c-4.156-4.172-4.156-10.922,0-15.094 c4.171-4.155,10.921-4.155,15.093,0C225.529,156.616,225.529,163.366,221.373,167.538z"></path> <path style="fill:#434A54;" d="M351.007,511.972c-1.688,0-3.405-0.406-4.999-1.25L37.523,346.356 c-5.203-2.766-7.171-9.219-4.406-14.421c2.766-5.203,9.234-7.172,14.421-4.406l308.5,164.366c5.202,2.766,7.171,9.218,4.39,14.421 C358.521,509.925,354.819,511.972,351.007,511.972z"></path> </g> <path style="opacity:0.2;fill:#FFFFFF;enable-background:new ;" d="M480.203,192.083c-6.734-43.138-22.201-81.417-46.014-113.76 c-14.654-19.921-42.872-39.686-77.401-54.216C319.837,8.561,278.198,0,239.559,0c-3.593,0-7.14,0.078-10.671,0.219 c35.545,1.405,72.997,9.765,106.557,23.889c34.529,14.53,62.746,34.295,77.418,54.216c23.795,32.343,39.279,70.622,46.014,113.76 c5.827,37.451,4.812,78.715-2.969,119.322c-14.297,74.636-50.154,141.93-90.137,169.991l6.234,3.328 c1.562,0.828,3.297,1.25,5.016,1.25c1.953,0,3.922-0.547,5.641-1.625c41.747-26.046,79.761-95.559,94.572-172.944 C485.015,270.798,486.031,229.534,480.203,192.083z"></path> </g></svg>
+                    <div>
+                    <p class="text-sm uppercase">Trip Type</p>
+                    <p class="text-lg">Guided Tour & Support</p>
+                    </div>
+                </div>
+                <!-- Row 2: Group Size and Total Distance -->
+                <!-- Group Size Card -->
+                <div class="flex items-center space-x-4 bg-gray-900 p-4 rounded-lg">
+                    <svg width="64px" height="64px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <circle cx="12" cy="8" r="2.5" stroke="#002aff" stroke-linecap="round"></circle> <path d="M13.7679 6.5C13.9657 6.15743 14.2607 5.88121 14.6154 5.70625C14.9702 5.5313 15.3689 5.46548 15.7611 5.51711C16.1532 5.56874 16.5213 5.73551 16.8187 5.99632C17.1161 6.25713 17.3295 6.60028 17.4319 6.98236C17.5342 7.36445 17.521 7.76831 17.3939 8.14288C17.2667 8.51745 17.0313 8.8459 16.7175 9.08671C16.4037 9.32751 16.0255 9.46985 15.6308 9.49572C15.2361 9.52159 14.8426 9.42983 14.5 9.23205" stroke="#0033ff"></path> <path d="M10.2321 6.5C10.0343 6.15743 9.73935 5.88121 9.38458 5.70625C9.02981 5.5313 8.63113 5.46548 8.23895 5.51711C7.84677 5.56874 7.47871 5.73551 7.18131 5.99632C6.88391 6.25713 6.67053 6.60028 6.56815 6.98236C6.46577 7.36445 6.47899 7.76831 6.60614 8.14288C6.73329 8.51745 6.96866 8.8459 7.28248 9.08671C7.5963 9.32751 7.97448 9.46985 8.36919 9.49572C8.76391 9.52159 9.15743 9.42983 9.5 9.23205" stroke="#0033ff"></path> <path d="M12 12.5C16.0802 12.5 17.1335 15.8022 17.4054 17.507C17.4924 18.0524 17.0523 18.5 16.5 18.5H7.5C6.94771 18.5 6.50763 18.0524 6.59461 17.507C6.86649 15.8022 7.91976 12.5 12 12.5Z" stroke="#0033ff" stroke-linecap="round"></path> <path d="M19.2965 15.4162L18.8115 15.5377L19.2965 15.4162ZM13.0871 12.5859L12.7179 12.2488L12.0974 12.9283L13.0051 13.0791L13.0871 12.5859ZM17.1813 16.5L16.701 16.639L16.8055 17H17.1813V16.5ZM15.5 12C16.5277 12 17.2495 12.5027 17.7783 13.2069C18.3177 13.9253 18.6344 14.8306 18.8115 15.5377L19.7816 15.2948C19.5904 14.5315 19.2329 13.4787 18.578 12.6065C17.9126 11.7203 16.9202 11 15.5 11V12ZM13.4563 12.923C13.9567 12.375 14.6107 12 15.5 12V11C14.2828 11 13.3736 11.5306 12.7179 12.2488L13.4563 12.923ZM13.0051 13.0791C15.3056 13.4614 16.279 15.1801 16.701 16.639L17.6616 16.361C17.1905 14.7326 16.019 12.5663 13.1691 12.0927L13.0051 13.0791ZM18.395 16H17.1813V17H18.395V16ZM18.8115 15.5377C18.8653 15.7526 18.7075 16 18.395 16V17C19.2657 17 20.0152 16.2277 19.7816 15.2948L18.8115 15.5377Z" fill="#0033ff"></path> <path d="M10.9129 12.5859L10.9949 13.0791L11.9026 12.9283L11.2821 12.2488L10.9129 12.5859ZM4.70343 15.4162L5.18845 15.5377L4.70343 15.4162ZM6.81868 16.5V17H7.19453L7.29898 16.639L6.81868 16.5ZM8.49999 12C9.38931 12 10.0433 12.375 10.5436 12.923L11.2821 12.2488C10.6264 11.5306 9.71723 11 8.49999 11V12ZM5.18845 15.5377C5.36554 14.8306 5.68228 13.9253 6.22167 13.2069C6.75048 12.5027 7.47226 12 8.49999 12V11C7.0798 11 6.08743 11.7203 5.42199 12.6065C4.76713 13.4787 4.40955 14.5315 4.21841 15.2948L5.18845 15.5377ZM5.60498 16C5.29247 16 5.13465 15.7526 5.18845 15.5377L4.21841 15.2948C3.98477 16.2277 4.73424 17 5.60498 17V16ZM6.81868 16H5.60498V17H6.81868V16ZM7.29898 16.639C7.72104 15.1801 8.69435 13.4614 10.9949 13.0791L10.8309 12.0927C7.98101 12.5663 6.8095 14.7326 6.33838 16.361L7.29898 16.639Z" fill="#0033ff"></path> </g></svg>
+                    <div>
+                    <p class="text-sm uppercase">Group Size</p>
+                    <p class="text-lg">2 - 12 People</p>
+                    </div>
+                </div>
+                <!-- Total Distance Card -->
+                <div class="flex items-center space-x-4 bg-gray-900 p-4 rounded-lg">
+                    <svg fill="#002aff" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="64px" height="64px" viewBox="0 0 502.436 502.436" xml:space="preserve"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <g> <path d="M402.481,300.41c0.033-0.051,0.068-0.098,0.102-0.148C402.86,299.793,402.459,300.432,402.481,300.41z"></path> <path d="M402.581,199.504c-0.029-0.055-0.062-0.105-0.094-0.16c0.064,0.113,0.143,0.254,0.201,0.359 C402.651,199.637,402.616,199.571,402.581,199.504z"></path> <path d="M406.079,55.139C406.471,54.674,405.678,55.6,406.079,55.139L406.079,55.139z"></path> <g> <path d="M292.844,383.368C293.102,383.25,293.04,383.279,292.844,383.368L292.844,383.368z"></path> <path d="M465.85,19.072c-1.174-2.404-2.348-4.809-3.521-7.215c-3.99,2.063-7.865,4.352-11.678,6.723 c-2.168,1.35-4.312,2.74-6.438,4.156l-2.803,1.896c-0.859-1.303-1.721-2.605-2.578-3.91l2.768-1.709 c2.293-1.393,4.604-2.76,6.939-4.078c3.986-2.254,8.037-4.42,12.189-6.348c-0.797-1.635-1.596-3.27-2.395-4.904 c-0.473-0.971-0.945-1.939-1.42-2.908c-0.367-0.752-0.23-0.936-1.041-0.643c-7.271,2.625-14.391,5.65-21.355,8.998 c-16.805,8.078-33.145,17.945-47.258,30.191c-14.646,12.707-27.654,27.381-36.574,44.721 c-8.943,17.389-13.643,36.518-13.912,56.063c-0.133,9.852,1.146,19.521,2.941,29.184c1.818,9.791,5.121,19.123,8.516,28.455 c2.318,6.732,5.961,12.953,8.506,19.604c1.656,4.328,2.861,8.682,3.896,13.186c0.953,4.148,1.133,8.771,0.643,12.994 c-0.48,4.143-1.887,7.734-3.979,11.306c-2.197,3.748-5.549,6.987-8.752,9.877c-3.389,3.059-7.027,5.823-10.812,8.371 c-16.141,10.856-34.52,18.27-52.9,24.368c-0.593,0.197-1.188,0.379-1.781,0.572l-37.776,77.905 c0.518-0.172,1.038-0.334,1.556-0.508c9.101-3.029,18.152-6.215,27.103-9.67c3.841-1.482,7.658-3.014,11.472-4.568 c0.313-0.129,1.05-0.448,1.05-0.448s0.495,1.215,0.717,1.715c1.938,4.396,3.873,8.787,5.812,13.183 c0.8,1.813,1.601,3.629,2.399,5.44c0.138,0.313,0.274,0.629,0.414,0.94c0.006,0.017-2.73,1.261-3.295,1.517 c0.129-0.06,0.25-0.114,0.346-0.159c-0.1,0.047-0.235,0.108-0.444,0.204c-15.015,6.884-30.364,13.048-45.89,18.673 c-5.586,2.023-11.205,3.959-16.837,5.852l-45.024,92.852c6.834-2.465,13.628-5.039,20.391-7.648 c18.019-6.959,35.824-14.482,53.357-22.588c35.633-16.473,70.357-35.328,102.297-58.234 c30.525-22.016,59.324-48.219,78.301-81.114c9.527-16.517,16.473-34.782,19.074-53.728c2.66-19.358,0.836-39.19-5.188-57.772 c-3.971-12.25-9.643-24.102-16.756-34.852c-3.158-4.773-6.484-9.369-9.947-13.92c-1.967-2.58-4.131-5.012-6.264-7.455 c-3.205-3.674-5.84-7.859-8.459-11.953c-4.441-6.939-7.707-14.865-9.32-22.945c-1.992-9.973-1.287-19.959,1.338-29.74 c5.035-18.758,16.883-35.439,29.934-49.518c8.021-8.656,16.82-16.625,26.174-23.818c1.865-1.436,3.756-2.84,5.676-4.199 C466.758,20.401,466.6,20.608,465.85,19.072z M403.092,299.358c0,0-0.201,0.381-0.51,0.903c-0.072,0.109-0.096,0.144-0.102,0.148 c-8.385,12.725-18.254,23.93-29.76,33.943c-10.844,9.438-22.645,17.574-34.791,25.221c-3.59-6.113-7.18-12.229-10.77-18.344 c15.223-8.717,30.031-18.301,42.879-30.336c6.33-5.932,11.947-12.385,17.027-19.408l1.197-1.566L403.092,299.358 M402.489,199.344c-0.121-0.217-0.18-0.324,0.094,0.16c0.254,0.459,0.215,0.391,0.105,0.199 c8.68,15.752,14.639,33.172,14.564,51.32c-5.246-0.1-10.494-0.201-15.74-0.301c0.66-13.469-2.85-26.854-8.238-39.109 c-2.982-6.785-6.766-13.166-10.443-19.588c-3.178-5.543-5.941-11.195-8.627-16.988c2.039-0.92,4.078-1.84,6.117-2.758 c1.311-0.59,4.99-2.266,4.99-2.266l0.332,0.695c2.414,4.66,4.896,9.178,7.66,13.639 C396.393,189.333,399.608,194.237,402.489,199.344z M406.079,55.139c-9.127,10.514-17.299,21.643-23.01,34.42 c-5.342,11.959-8.377,24.941-8.166,38.061c-3.402-0.049-6.807-0.098-10.211-0.146c0.506-17.471,6.057-34.4,14.984-49.367 c4.535-7.607,9.904-14.607,15.695-21.293c1.395-1.611,2.891-3.137,4.355-4.684c0.527-0.555,2.143-2.352,2.143-2.352 s3.311,3.207,4.785,4.619c0.02,0.018,0.035,0.035,0.055,0.053C406.489,54.67,406.28,54.901,406.079,55.139z"></path> </g> <path d="M291.195,210.11c0-70.35-57.233-127.584-127.583-127.584C93.263,82.526,36.03,139.76,36.03,210.11 c0,20.615,4.921,40.1,13.64,57.353l113.942,234.973l113.96-235.01C286.28,250.182,291.195,230.709,291.195,210.11z M163.612,280.711c-38.931,0-70.604-31.671-70.604-70.602c0-38.932,31.674-70.605,70.604-70.605s70.604,31.674,70.604,70.605 C234.215,249.04,202.542,280.711,163.612,280.711z"></path> </g> </g> </g></svg>
+                    <div>
+                    <p class="text-sm uppercase">Total Distance</p>
+                    <p class="text-lg">Approx. 430 km</p>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <!-- Rider Level and Price (1 column) -->
+            <div class="md:col-span-1 flex flex-col items-end space-y-4">
+                <!-- Rider Level -->
+                <!-- <div class="relative">
+                <svg class="w-24 h-24" viewBox="0 0 100 50" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M 10 50 A 40 40 0 0 1 90 50" fill="none" stroke="#444" stroke-width="10"/>
+                    <path d="M 10 50 A 40 40 0 0 1 50 10" fill="none" stroke="#ff0000" stroke-width="10"/>
+                    <circle cx="50" cy="50" r="5" fill="white"/>
+                </svg>
+                <p class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-sm text-center">RIDER LEVEL: <br> 2.4 Moderate <span class="text-red-600">!</span></p>
+                </div> -->
+                <!-- Price -->
+                <div class="text-right">
+                <p class="text-lg">3 Days / 2 Nights from</p>
+                <p class="text-3xl font-bold">USD 680 <span class="text-lg">Per Person</span></p>
+                <button style="background-color: #002aff; margin: 20px 0 0 0;" class="inline-block text-white py-3 px-8 rounded-full text-lg font-semibold transform hover:scale-105 transition duration-300">View Dates & Prices</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="bg-black text-white py-6 px-5 md:px-20 sticky top-0 z-10">
+        <!-- Mobile Hamburger Menu -->
+        <div class="md:hidden flex items-center justify-between">
+            <button id="menu-toggle-tour" class="text-white focus:outline-none">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
+        </div>
+        <!-- Mobile Menu (Hidden by Default) -->
+        <ul id="mobile-menu-tour" class="hidden flex-col space-y-4 text-sm uppercase bg-black w-full absolute left-0 top-16 px-5 py-4 md:hidden">
+            <li><a href="#overview" class="nav-link hover:text-gray-300 relative block py-2">Overview</a></li>
+            <li><a href="#itinerary" class="nav-link hover:text-gray-300 relative block py-2">Itinerary</a></li>
+            <li><a href="#dates-prices" class="nav-link hover:text-gray-300 relative block py-2">Dates & Prices</a></li>
+            <li><a href="#inclusions" class="nav-link hover:text-gray-300 relative block py-2">Inclusions</a></li>
+            <li><a href="#bikes" class="nav-link hover:text-gray-300 relative block py-2">Bikes</a></li>
+            <li><a href="#trip-gallery" class="nav-link hover:text-gray-300 relative block py-2">Trip Gallery</a></li>
+            <li><a href="#trip-information" class="nav-link hover:text-gray-300 relative block py-2">Trip Information</a></li>
+        </ul>
+        <!-- Desktop Menu -->
+        <ul class="hidden md:flex space-x-8 justify-center md:justify-start text-sm uppercase">
+            <li><a href="#overview" class="nav-link hover:text-gray-300 relative">Overview</a></li>
+            <li><a href="#itinerary" class="nav-link hover:text-gray-300 relative">Itinerary</a></li>
+            <li><a href="#dates-prices" class="nav-link hover:text-gray-300 relative">Dates & Prices</a></li>
+            <li><a href="#inclusions" class="nav-link hover:text-gray-300 relative">Inclusions</a></li>
+            <li><a href="#bikes" class="nav-link hover:text-gray-300 relative">Bikes</a></li>
+            <li><a href="#trip-gallery" class="nav-link hover:text-gray-300 relative">Trip Gallery</a></li>
+            <li><a href="#trip-information" class="nav-link hover:text-gray-300 relative">Trip Information</a></li>
+        </ul>
+    </nav>
+
+    
+
+    <!-- Content Sections -->
+    <section id="overview" class="py-16 px-6 md:px-24 bg-gradient-to-b from-gray-50 to-gray-100">
+        <div class="flex flex-col md:flex-row gap-12 max-w-7xl mx-auto">
+            <!-- Highlights Section -->
+            <div class="md:w-1/2 bg-white p-8 rounded-xl shadow-lg transform hover:scale-105 transition duration-300">
+                <h3 class="text-3xl font-bold mb-6 text-gray-800">Highlights</h3>
+                <ul class="space-y-4 text-lg text-gray-600">
+                    <li class="flex items-start">
+                        <span class="text-[#8e4a1a] mr-3 text-2xl">➤</span> Dirt Bike Tour to Machu Picchu & Sacred Valley
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-[#8e4a1a] mr-3 text-2xl">➤</span> Exceptional off-road adventures through Peru’s ancient trails
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-[#8e4a1a] mr-3 text-2xl">➤</span> Stay at the EcoLodge for a sustainable tourism experience
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-[#8e4a1a] mr-3 text-2xl">➤</span> Guided tour with an English-speaking expert sharing Peru’s rich history and culture
+                    </li>
+                </ul>
+            </div>
+            <!-- Trip Overview Section -->
+            <div class="md:w-1/2">
+                <h3 class="text-3xl font-bold mb-6 text-gray-800">Trip Overview</h3>
+                <p class="text-lg leading-relaxed text-gray-600">
+                    Embark on an exhilarating 4-day off-road adventure through Peru’s stunning Andes, exploring the iconic Machu Picchu and the Sacred Valley. This tour is crafted for thrill-seekers and culture enthusiasts, offering rugged trails, breathtaking mountain vistas, and visits to ancient Incan ruins. From Cusco’s vibrant streets to remote highland villages, you’ll ride challenging paths while immersing yourself in Peru’s rich heritage. Perfect for riders craving both adrenaline and cultural discovery, this journey blends technical off-road riding with unforgettable historical exploration.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="itinerary" class="py-16 px-6 md:px-24 bg-white">
+        <h2 class="text-4xl font-bold mb-12 text-center text-gray-800">Itinerary</h2>
+        <div class="flex flex-col md:flex-row gap-12 max-w-7xl mx-auto">
+            <!-- Description Section -->
+            <div class="md:w-4/5">
+                <p class="text-lg leading-relaxed text-gray-600">
+                    Embark on a thrilling 4-day journey through Peru’s Andes. Day 1 starts in Cusco, riding 120 km through scenic valleys to Ollantaytambo, with a visit to Incan ruins. Day 2 covers 150 km to Machu Picchu, navigating rugged trails and exploring the iconic citadel. Day 3 takes you 130 km through the Sacred Valley, visiting local markets and remote villages. Day 4 concludes with a 100 km ride back to Cusco, passing breathtaking mountain vistas. This itinerary blends technical riding with cultural immersion, perfect for adventure seekers.
+                </p>
+            </div>
+            <!-- Image and Details Section -->
+            <div class="md:w-1/5 flex flex-col items-center">
+                <img src="https://dirtbikeexpeditions.com/wp-content/uploads/2022/01/cambodia-dirt-bike-tour9862.jpg" alt="Itinerary Image" class="w-full h-auto rounded-lg mb-6 shadow-md">
+                <div class="text-lg text-center text-gray-600">
+                    <p><strong class="text-[#8e4a1a]">Today’s Ride:</strong> 150 km</p>
+                    <p><strong class="text-[#8e4a1a]">Meals:</strong> Lunch & Dinner</p>
+                    <p><strong class="text-[#8e4a1a]">Stay:</strong> Sacred Valley EcoLodge</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="dates-prices" class="py-16 px-6 md:px-24 bg-gradient-to-b from-gray-50 to-gray-100">
+        <h2 class="text-4xl font-bold mb-12 text-center text-gray-800">Dates & Prices</h2>
+        <div class="max-w-4xl mx-auto">
+            <h3 class="text-2xl font-semibold mb-6 text-gray-800">Price Rates</h3>
+            <div class="overflow-x-auto">
+                <table class="w-full text-lg border-collapse bg-white rounded-lg shadow-lg">
+                    <thead>
+                        <!-- <tr style="background-color: #8e4a1a;" class="text-white"> -->
+                        <tr style="background-color: #002aff;" class="text-white">
+                            <th class="p-4">1 Pax</th>
+                            <th class="p-4">2-3 Pax</th>
+                            <th class="p-4">4-5 Pax</th>
+                            <th class="p-4">6+ Pax</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="text-center">
+                            <td class="border p-4 text-gray-600">$750 Per Person</td>
+                            <td class="border p-4 text-gray-600">$680 Per Person</td>
+                            <td class="border p-4 text-gray-600">$590 Per Person</td>
+                            <td class="border p-4 text-gray-600">$499 Per Person</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="mt-10 text-center">
+                <a href="#" class="inline-block text-white py-3 px-8 rounded-full text-lg font-semibold  transform hover:scale-105 transition duration-300" style="background-color: #002aff;">Book This Tour</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="inclusions" class="py-16 px-6 md:px-24 bg-white">
+        <h2 class="text-4xl font-bold mb-12 text-center text-gray-800">Inclusions</h2>
+        <h3 class="text-2xl font-semibold mb-10 text-center text-gray-600">What's Included</h3>
+        <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="bg-gray-50 p-6 rounded-xl shadow-md flex items-start transform hover:scale-105 transition duration-300">
+                <img src="./images/bike.jpg" alt="Check Icon" class="w-8 h-8 mr-4">
+                <div>
+                    <h4 class="text-xl font-semibold mb-2 text-gray-800">Dirt Bike</h4>
+                    <p class="text-lg text-gray-600">You will ride on Honda XR 250R. All fuel for your motorcycle is provided by us.</p>
+                </div>
+            </div>
+            <div class="bg-gray-50 p-6 rounded-xl shadow-md flex items-start transform hover:scale-105 transition duration-300">
+                <img src="./images/accommodation.jpg" alt="Check Icon" class="w-8 h-8 mr-4">
+                <div>
+                    <h4 class="text-xl font-semibold mb-2 text-gray-800">Accommodation</h4>
+                    <p class="text-lg text-gray-600">All hotels as mentioned in the tour details or similar (subject to availability).</p>
+                </div>
+            </div>
+            <div class="bg-gray-50 p-6 rounded-xl shadow-md flex items-start transform hover:scale-105 transition duration-300">
+                <img src="./images/gear.jpg" alt="Check Icon" class="w-8 h-8 mr-4">
+                <div>
+                    <h4 class="text-xl font-semibold mb-2 text-gray-800">Gears</h4>
+                    <p class="text-lg text-gray-600">Full face helmet, boots, riding jersey, gloves, small water backpack, etc.</p>
+                </div>
+            </div>
+            <div class="bg-gray-50 p-6 rounded-xl shadow-md flex items-start transform hover:scale-105 transition duration-300">
+                <img src="./images/guide.jpg" alt="Check Icon" class="w-8 h-8 mr-4">
+                <div>
+                    <h4 class="text-xl font-semibold mb-2 text-gray-800">Experienced Guide</h4>
+                    <p class="text-lg text-gray-600">English-speaking local guide leads your way and knows the trails like the back of his hand.</p>
+                </div>
+            </div>
+            <div class="bg-gray-50 p-6 rounded-xl shadow-md flex items-start transform hover:scale-105 transition duration-300">
+                <img src="./images/meal.jpg" alt="Check Icon" class="w-8 h-8 mr-4">
+                <div>
+                    <h4 class="text-xl font-semibold mb-2 text-gray-800">Meals & Snacks</h4>
+                    <p class="text-lg text-gray-600">Meals as per itinerary. Bottled water, local snacks, and beers are included in the tour price.</p>
+                </div>
+            </div>
+            <div class="bg-gray-50 p-6 rounded-xl shadow-md flex items-start transform hover:scale-105 transition duration-300">
+                <img src="./images/tickets.jpg" alt="Check Icon" class="w-8 h-8 mr-4">
+                <div>
+                    <h4 class="text-xl font-semibold mb-2 text-gray-800">Ticket</h4>
+                    <p class="text-lg text-gray-600">All entrance fees to the temples and attractions are included.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="bikes" class="py-16 px-6 md:px-24 bg-gradient-to-b from-gray-50 to-gray-100">
+        <h2 class="text-4xl font-bold mb-12 text-center text-gray-800">Bikes</h2>
+        <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bg-white p-6 rounded-xl shadow-lg transform hover:scale-105 transition duration-300">
+                <img src="https://i.pinimg.com/736x/e3/f7/2c/e3f72c08f78dd4f616454ef95a6b5657.jpg" alt="Honda XR 250R" class="w-full h-auto rounded-lg mb-4">
+                <h4 class="text-xl text-center font-bold mb-2 text-gray-800">Honda XR 250R</h4>
+                <p class="text-lg text-gray-600 text-center">Included in your trip price</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-lg transform hover:scale-105 transition duration-300">
+                <img src="https://i.pinimg.com/736x/9b/18/15/9b18151dee6a277cfd5c66ea9fe56359.jpg" alt="Yamaha WR 250F" class="w-full h-auto rounded-lg mb-4">
+                <h4 class="text-xl text-center font-bold mb-2 text-gray-800">Yamaha WR 250F</h4>
+                <p class="text-lg text-gray-600 text-center">Available at a surcharge</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-lg transform hover:scale-105 transition duration-300">
+                <img src="https://i.pinimg.com/736x/d3/61/a2/d361a200557bfce7852a262697069508.jpg" alt="KTM 250 EXC" class="w-full h-auto rounded-lg mb-4">
+                <h4 class="text-xl text-center font-bold mb-2 text-gray-800">KTM 250 EXC</h4>
+                <p class="text-lg text-gray-600 text-center">Available at a surcharge</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="trip-gallery" class="py-16 px-6 md:px-24 bg-white">
+        <h2 class="text-4xl font-bold mb-12 text-center text-gray-800">Trip Gallery</h2>
+        <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
+            <img src="https://i.pinimg.com/474x/80/6e/d0/806ed08400b6f4a52f1ee429d0cca71a.jpg" alt="Gallery Image 1" class="w-full h-auto rounded-lg shadow-md transform hover:scale-105 transition duration-300">
+            <img src="https://i.pinimg.com/474x/d6/a1/4b/d6a14bbfb2eaaba6f32a7b1d0a9fc8fb.jpg" alt="Gallery Image 2" class="w-full h-auto rounded-lg shadow-md transform hover:scale-105 transition duration-300">
+            <img src="https://i.pinimg.com/474x/81/f6/b0/81f6b079823ca3566a6d7474fa0f6aab.jpg" alt="Gallery Image 3" class="w-full h-auto rounded-lg shadow-md transform hover:scale-105 transition duration-300">
+            <img src="https://i.pinimg.com/736x/71/30/79/713079c242fd1db55f3015ce45815f99.jpg" alt="Gallery Image 4" class="w-full h-auto rounded-lg shadow-md transform hover:scale-105 transition duration-300">
+            <img src="https://i.pinimg.com/474x/bb/68/28/bb6828b1933a7caa40433d0d5febed8e.jpg" alt="Gallery Image 5" class="w-full h-auto rounded-lg shadow-md transform hover:scale-105 transition duration-300">
+            <img src="https://i.pinimg.com/474x/4d/4d/ef/4d4defecc8ab10258b03e255c2afe1d2.jpg" alt="Gallery Image 6" class="w-full h-auto rounded-lg shadow-md transform hover:scale-105 transition duration-300">
+        </div>
+    </section>
+
+    <section id="trip-information" class="py-16 px-6 md:px-24 bg-gradient-to-b from-gray-50 to-gray-100">
+        <h2 class="text-4xl font-bold mb-12 text-center text-gray-800">Trip Information</h2>
+        <div class="max-w-3xl mx-auto space-y-6">
+            <div class="bg-white rounded-xl shadow-md">
+                <button class="w-full text-left text-lg font-semibold py-4 px-6 flex items-center justify-between hover:bg-gray-50 transition duration-300" style="color: #8e4a1a;" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('span:last-child').textContent = this.nextElementSibling.classList.contains('hidden') ? '+' : '−'">
+                    <span>Visa & Passport</span>
+                    <span class="text-[#8e4a1a] text-xl">+</span>
+                </button>
+                <div class="text-lg hidden px-6 pb-4 text-gray-600">A valid passport with at least six months’ validity from the date of entry is required. Most nationalities can obtain a 30-day visa on arrival, which costs around $30. An e-visa is also available online and should be applied for before departure. Visa extensions can be arranged within the country if needed.</div>
+            </div>
+            <div class="bg-white rounded-xl shadow-md">
+                <button class="w-full text-left text-lg font-semibold py-4 px-6 flex items-center justify-between hover:bg-gray-50 transition duration-300" style="color: #8e4a1a;" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('span:last-child').textContent = this.nextElementSibling.classList.contains('hidden') ? '+' : '−'">
+                    <span>Local Currency</span>
+                    <span class="text-[#8e4a1a] text-xl">+</span>
+                </button>
+                <div class="text-lg hidden px-6 pb-4 text-gray-600">The Cambodian Riel (KHR) is the official currency, but US dollars are widely accepted. ATMs are available in cities and tourist areas, dispensing both currencies. It’s practical to carry small denominations for rural areas.</div>
+            </div>
+            <div class="bg-white rounded-xl shadow-md">
+                <button class="w-full text-left text-lg font-semibold py-4 px-6 flex items-center justify-between hover:bg-gray-50 transition duration-300" style="color: #8e4a1a;" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('span:last-child').textContent = this.nextElementSibling.classList.contains('hidden') ? '+' : '−'">
+                    <span>Local Sim Card</span>
+                    <span class="text-[#8e4a1a] text-xl">+</span>
+                </button>
+                <div class="text-lg hidden px-6 pb-4 text-gray-600">Local SIM cards are readily available in most cities in Cambodia. You can purchase SIM cards from providers such as Metfone, Smart, and Cellcard at airports, convenience stores, or telecom shops. Make sure your phone is unlocked and compatible with local networks.</div>
+            </div>
+            <div class="bg-white rounded-xl shadow-md">
+                <button class="w-full text-left text-lg font-semibold py-4 px-6 flex items-center justify-between hover:bg-gray-50 transition duration-300" style="color: #8e4a1a;" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('span:last-child').textContent = this.nextElementSibling.classList.contains('hidden') ? '+' : '−'">
+                    <span>Food and Dietary Requirements</span>
+                    <span class="text-[#8e4a1a] text-xl">+</span>
+                </button>
+                <div class="text-lg hidden px-6 pb-4 text-gray-600">Cambodian cuisine features rice, noodles, and fresh vegetables, often seasoned with herbs and spices. Street food is popular, but always choose vendors with high hygiene standards. Vegetarians and those with dietary restrictions will find a variety of options, though it’s wise to communicate specific needs clearly.</div>
+            </div>
+            <div class="bg-white rounded-xl shadow-md">
+                <button class="w-full text-left text-lg font-semibold py-4 px-6 flex items-center justify-between hover:bg-gray-50 transition duration-300" style="color: #8e4a1a;" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('span:last-child').textContent = this.nextElementSibling.classList.contains('hidden') ? '+' : '−'">
+                    <span>Weather</span>
+                    <span class="text-[#8e4a1a] text-xl">+</span>
+                </button>
+                <div class="text-lg hidden px-6 pb-4 text-gray-600">Cambodia has a tropical climate with two main seasons: wet and dry. The wet season runs from May to October, characterized by heavy rain and high humidity. The dry season, from November to April, is marked by little rainfall and higher temperatures, with the coolest months being December and January. Ideal travel months are November to February, when temperatures are more moderate.</div>
+            </div>
+            <div class="bg-white rounded-xl shadow-md">
+                <button class="w-full text-left text-lg font-semibold py-4 px-6 flex items-center justify-between hover:bg-gray-50 transition duration-300" style="color: #8e4a1a;" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('span:last-child').textContent = this.nextElementSibling.classList.contains('hidden') ? '+' : '−'">
+                    <span>Riding Experience</span>
+                    <span class="text-[#8e4a1a] text-xl">+</span>
+                </button>
+                <div class="text-lg hidden px-6 pb-4 text-gray-600">Cambodia’s terrain can be challenging, featuring a mix of paved roads, dirt tracks, and jungle paths. Prior off-road riding experience is highly recommended. New riders should start with shorter, guided tours to build confidence and skill.</div>
+            </div>
+            <div class="bg-white roundedshowing-md">
+                <button class="w-full text-left text-lg font-semibold py-4 px-6 flex items-center justify-between hover:bg-gray-50 transition duration-300" style="color: #8e4a1a;" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('span:last-child').textContent = this.nextElementSibling.classList.contains('hidden') ? '+' : '−'">
+                    <span>Group Leader</span>
+                    <span class="text-[#8e4a1a] text-xl">+</span>
+                </button>
+                <div class="text-lg hidden px-6 pb-4 text-gray-600">A knowledgeable group leader enhances the experience by ensuring safety, providing local insights, and managing logistics. Our guides are well-trained with extensive local experience and good communication skills.</div>
+            </div>
+            <div class="bg-white rounded-xl shadow-md">
+                <button class="w-full text-left text-lg font-semibold py-4 px-6 flex items-center justify-between hover:bg-gray-50 transition duration-300" style="color: #8e4a1a;" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('span:last-child').textContent = this.nextElementSibling.classList.contains('hidden') ? '+' : '−'">
+                    <span>Non-Rider Activities</span>
+                    <span class="text-[#8e4a1a] text-xl">+</span>
+                </button>
+                <div class="text-lg hidden px-6 pb-4 text-gray-600">On most of our dirt bike trips, we offer non-riding options for riders who want to take the afternoon off, or for travel companions who prefer to spend little or no time on the dirt bike. Some of these options may need to be scheduled before your trip—please contact one of our Trip Planners for more information. Expenses and/or related transportation for these activities may not be included in the trip price.</div>
+            </div>
+            <div class="bg-white rounded-xl shadow-md">
+                <button class="w-full text-left text-lg font-semibold py-4 px-6 flex items-center justify-between hover:bg-gray-50 transition duration-300" style="color: #8e4a1a;" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('span:last-child').textContent = this.nextElementSibling.classList.contains('hidden') ? '+' : '−'">
+                    <span>Responsible Travel</span>
+                    <span class="text-[#8e4a1a] text-xl">+</span>
+                </button>
+                <div class="text-lg hidden px-6 pb-4 text-gray-600">Travel responsibly by respecting local customs and traditions. Avoid single-use plastics, support local businesses, and be conscious of the environment. Engage respectfully with local communities and contribute positively to their economy and culture.</div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Smooth scrolling for nav links
+        document.querySelectorAll('.nav-link').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80, // Adjust for fixed navbar height
+                        behavior: 'smooth'
+                    });
+                }
+                // Close mobile menu after clicking a link
+                const mobileMenu = document.getElementById('mobile-menu-tour');
+                if (mobileMenu.classList.contains('flex')) {
+                    mobileMenu.classList.remove('flex');
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+
+        // Mobile menu toggle
+        document.getElementById('menu-toggle-tour').addEventListener('click', function () {
+            const mobileMenu = document.getElementById('mobile-menu-tour');
+            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('flex');
+        });
+    </script>
+    
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-16">
+        <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div>
+                <img src="./images/logo.png" alt="Logo" class="h-13 mb-4">
+                <p class="text-gray-400 mb-4">DirtSurge Expeditions offers unforgettable adventures across the globe.</p>
+                <div class="flex space-x-4">
+                    <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
+                    <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Expeditions</h3>
+                <ul class="space-y-2">
+                    <li><a href="#" class="text-gray-400 hover:text-white">Paris</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white">Tokyo</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white">New York</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white">Rome</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Company</h3>
+                <ul class="space-y-2">
+                    <li><a href="#" class="text-gray-400 hover:text-white">About Us</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white">Why Us</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white">All Expeditions</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white">Bikes & Gears</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white">Reviews</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white">Contact Us</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Contact</h3>
+                <p class="text-gray-400 mb-4">We Accept Payment:</p>
+                <img src="./images/payment.png" alt="Payment" sizes="70px" class="mb-4">
+                <p class="text-gray-400">123 Adventure St, Travel City</p>
+                <p class="text-gray-400">Phone: +1 234 567 890</p>
+                <p class="text-gray-400">WhatsApp: +855 10 34 20 20</p>
+                <p class="text-gray-400">info@dirtsurgeexpeditions.com</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="./js/main.js"></script>
+</body>
+</html>
