@@ -230,6 +230,154 @@
         </div>
     </section>
 
+    <!-- Why Choose Dirt Biking? -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-extrabold text-center text-gray-800 mb-4 animate-fade-in">Why Choose Dirt Biking?</h2>
+            <p class="text-gray-600 text-center mb-12 max-w-2xl mx-auto">Discover the thrill and benefits of dirt biking with DirtSurge Expeditions.</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="text-center p-6 bg-gray-50 rounded-lg shadow-md">
+                    <i class="fas fa-heartbeat text-yellow-500 text-3xl mb-4"></i>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Adrenaline Rush</h3>
+                    <p class="text-gray-600">Experience the thrill of navigating challenging terrains at high speeds.</p>
+                </div>
+                <div class="text-center p-6 bg-gray-50 rounded-lg shadow-md">
+                    <i class="fas fa-tree text-yellow-500 text-3xl mb-4"></i>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Connect with Nature</h3>
+                    <p class="text-gray-600">Ride through forests, mountains, and ancient sites, immersing yourself in the outdoors.</p>
+                </div>
+                <div class="text-center p-6 bg-gray-50 rounded-lg shadow-md">
+                    <i class="fas fa-users text-yellow-500 text-3xl mb-4"></i>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Build Bonds</h3>
+                    <p class="text-gray-600">Share the adventure with friends or meet fellow riders on our group tours.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-16 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-extrabold text-center text-gray-800 mb-4 animate-fade-in">What Riders Say About Us</h2>
+            <p class="text-gray-600 text-center mb-12 max-w-2xl mx-auto">Hear from adventurers who’ve experienced the thrill of dirt biking with DirtSurge Expeditions.</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="feedback-card">
+                    <img src="https://i.pinimg.com/474x/31/d0/b0/31d0b0091a0a9f98c8e41e3578a2f61d.jpg" alt="User 1" class="feedback-image">
+                    <div class="feedback-content">
+                        <div class="feedback-header">
+                            <h3 class="feedback-name">Alex M.</h3>
+                            <p class="feedback-meta">June 2024</p>
+                        </div>
+                        <div class="feedback-rating">
+                            <span class="rating-dot"></span>
+                            <span class="rating-dot"></span>
+                            <span class="rating-dot"></span>
+                            <span class="rating-dot"></span>
+                            <span class="rating-dot"></span>
+                        </div>
+                        <p class="feedback-quote-limited">"The best dirt biking experience I’ve ever had! The guides were knowledgeable, and the trails were incredible."</p>
+                        <span class="read-more">Read More</span>
+                    </div>
+                </div>
+                <div class="feedback-card">
+                    <img src="https://i.pinimg.com/474x/e9/8a/a2/e98aa29a9d55bd3ddae6f063b0e9594a.jpg" alt="User 2" class="feedback-image">
+                    <div class="feedback-content">
+                        <div class="feedback-header">
+                            <h3 class="feedback-name">Sophie L.</h3>
+                            <p class="feedback-meta">August 2024</p>
+                        </div>
+                        <div class="feedback-rating">
+                            <span class="rating-dot"></span>
+                            <span class="rating-dot"></span>
+                            <span class="rating-dot"></span>
+                            <span class="rating-dot"></span>
+                            <span class="rating-dot"></span>
+                        </div>
+                        <p class="feedback-quote-limited">"I felt safe and supported the entire time. The custom trails were perfect for my skill level."</p>
+                        <span class="read-more">Read More</span>
+                    </div>
+                </div>
+                <div class="feedback-card">
+                    <img src="https://i.pinimg.com/474x/3b/a8/9f/3ba89fa79b5b481713315cb9842ca63a.jpg" alt="User 3" class="feedback-image">
+                    <div class="feedback-content">
+                        <div class="feedback-header">
+                            <h3 class="feedback-name">Jake R.</h3>
+                            <p class="feedback-meta">September 2024</p>
+                        </div>
+                        <div class="feedback-rating">
+                            <span class="rating-dot"></span>
+                            <span class="rating-dot"></span>
+                            <span class="rating-dot"></span>
+                            <span class="rating-dot"></span>
+                            <span class="rating-dot"></span>
+                        </div>
+                        <p class="feedback-quote-limited">"The cultural immersion was a bonus! Riding through ancient temples was unforgettable."</p>
+                        <span class="read-more">Read More</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+        document.querySelectorAll('.read-more').forEach(button => {
+            button.addEventListener('click', function() {
+                const quoteLimited = this.previousElementSibling;
+                const fullQuote = quoteLimited.textContent;
+                quoteLimited.classList.remove('feedback-quote-limited');
+                quoteLimited.classList.add('feedback-quote');
+                quoteLimited.textContent = fullQuote;
+                this.style.display = 'none';
+            });
+        });
+    </script>
+
+    <!-- Meet Our Tour Guide -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-extrabold text-center text-gray-800 mb-4 animate-fade-in">Meet Our Expert Guides</h2>
+            <p class="text-gray-600 text-center mb-12 max-w-2xl mx-auto">Our guides are passionate riders with years of experience, ensuring you have a safe and thrilling adventure.</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="text-center">
+                    <img src="file:///C:/Users/PEav/Desktop/dirtsurge_expedition/dirtsurgeexpeditions/images/pech.jpg" alt="Guide 1" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover">
+                    <h3 class="text-xl font-semibold text-gray-800">Sokha V.</h3>
+                    <p class="text-gray-600">15+ years of dirt biking experience in Cambodia.</p>
+                </div>
+                <div class="text-center">
+                    <img src="file:///C:/Users/PEav/Desktop/dirtsurge_expedition/dirtsurgeexpeditions/images/girl.jpg" alt="Guide 2" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover">
+                    <h3 class="text-xl font-semibold text-gray-800">Rithy K.</h3>
+                    <p class="text-gray-600">Expert in navigating challenging jungle trails.</p>
+                </div>
+                <div class="text-center">
+                    <img src="file:///C:/Users/PEav/Desktop/dirtsurge_expedition/dirtsurgeexpeditions/images/man.jpg" alt="Guide 3" class="w-32 h-32 rounded-full mx-auto mb-4 object-cover">
+                    <h3 class="text-xl font-semibold text-gray-800">Chantha S.</h3>
+                    <p class="text-gray-600">Specialist in cultural tours and history.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-extrabold text-center text-gray-800 mb-4 animate-fade-in">Frequently Asked Questions</h2>
+            <p class="text-gray-600 text-center mb-12 max-w-2xl mx-auto">Got questions? We’ve got answers.</p>
+            <div class="max-w-3xl mx-auto space-y-4">
+                <details class="bg-white p-4 rounded-lg shadow-md">
+                    <summary class="font-semibold text-gray-800 cursor-pointer">What should I bring for a dirt biking tour?</summary>
+                    <p class="text-gray-600 mt-2">We recommend bringing comfortable clothing, closed-toe shoes, and a water bottle. We provide all necessary gear, including helmets and gloves.</p>
+                </details>
+                <details class="bg-white p-4 rounded-lg shadow-md">
+                    <summary class="font-semibold text-gray-800 cursor-pointer">Are the tours suitable for beginners?</summary>
+                    <p class="text-gray-600 mt-2">Yes! We offer custom adventures tailored to all skill levels, with beginner-friendly trails and thorough safety briefings.</p>
+                </details>
+                <details class="bg-white p-4 rounded-lg shadow-md">
+                    <summary class="font-semibold text-gray-800 cursor-pointer">What happens if it rains during the tour?</summary>
+                    <p class="text-gray-600 mt-2">Our tours run rain or shine, as long as conditions are safe. If the weather poses a risk, we’ll reschedule or provide a full refund.</p>
+                </details>
+            </div>
+        </div>
+    </section>
+
     <!-- Call to Action Section -->
     <section class="bg-yellow-400 text-black py-16 px-6">
         <div class="max-w-4xl mx-auto text-center">
@@ -249,22 +397,34 @@
         </div>
     </section>
 
+    <!-- Sign up the newsletter -->
+    <section class="py-16 bg-gray-200">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-4xl font-extrabold text-gray-800 mb-4 animate-fade-in">Stay in the Loop</h2>
+            <p class="text-gray-600 mb-6 max-w-xl mx-auto">Subscribe to our newsletter for the latest updates on tours, gear, and exclusive offers!</p>
+            <form class="flex justify-center gap-4">
+                <input type="email" placeholder="Enter your email" class="px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 w-full max-w-sm">
+                <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
     <!-- Whatapp -->
     <a href="https://wa.me/+85516700896" target="_blank" class="fixed bottom-6 right-6 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition">
         <i class="fab fa-whatsapp text-2xl"></i>
     </a>
     
-    <!-- Footer -->
+    <!-- Footer Section -->
     <footer class="bg-gray-800 text-white py-16">
         <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8">
             <div>
                 <img src="./images/logo.png" alt="Logo" class="h-13 mb-4">
                 <p class="text-gray-400 mb-4">DirtSurge Expeditions offers unforgettable adventures across the globe.</p>
                 <div class="flex space-x-4">
-                    <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
-                    <a href="https://youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
-                    <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://facebook.com" target="_blank" aria-label="Follow us on Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://instagram.com" target="_blank" aria-label="Follow us on Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://youtube.com" target="_blank" aria-label="Follow us on YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="https://linkedin.com" target="_blank" aria-label="Follow us on LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                 </div>
             </div>
             <div>
@@ -290,11 +450,18 @@
             <div>
                 <h3 class="text-lg font-semibold mb-4">Contact</h3>
                 <p class="text-gray-400 mb-4">We Accept Payment:</p>
-                <img src="./images/payment.png" alt="Payment" sizes="70px" class="mb-4">
+                <img src="./images/payment.png" alt="Payment methods accepted" sizes="70px" class="mb-4">
                 <p class="text-gray-400">123 Adventure St, Travel City</p>
                 <p class="text-gray-400">Phone: +1 234 567 890</p>
                 <p class="text-gray-400">WhatsApp: +855 10 34 20 20</p>
                 <p class="text-gray-400">info@dirtsurgeexpeditions.com</p>
+            </div>
+        </div>
+        <div class="border-t border-gray-700 mt-8 pt-6 text-center">
+            <p class="text-gray-400 text-sm">© 2025 DirtSurge Expeditions. All rights reserved.</p>
+            <div class="flex justify-center space-x-4 mt-4">
+                <a href="#" class="text-gray-400 hover:text-white">Privacy Policy</a>
+                <a href="#" class="text-gray-400 hover:text-white">Terms of Service</a>
             </div>
         </div>
     </footer>

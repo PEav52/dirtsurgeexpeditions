@@ -3,9 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Join DirtSurge Expeditions for thrilling dirt bike tours in Cambodia, exploring ancient temples, jungles, and rural villages.">
+    <meta name="keywords" content="dirt bike tours, Cambodia adventure, off-road biking, Kampong Thom, motorcycle expeditions">
+    <meta property="og:title" content="DirtSurge Expeditions - Adventure Dirt Bike Tours in Cambodia">
+    <meta property="og:description" content="Experience thrilling dirt bike adventures through Cambodia's jungles, temples, and villages with DirtSurge Expeditions.">
+    <meta property="og:image" content="https://yourwebsite.com/images/og-image.jpg">
+    <meta property="og:url" content="https://yourwebsite.com">
     <title>DirtSurge Expeditions</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- <link rel="manifest" href="/manifest.json"> -->
     <!-- Or for .png -->
     <link rel="icon" href="./images/logo.png" type="image/png">
     <style>
@@ -147,23 +154,23 @@
         <div class="flex justify-between items-center">
             <!-- Logo -->
             <div class="flex items-center">
-            <img src="./images/logo.png" alt="Company Logo" class="h-16">
+            <img src="./images/logo.png" alt="Company Logo" class="h-16" loading="lazy">
             </div>
     
             <!-- Desktop Menu -->
             <div class="hidden md:flex items-center space-x-8">
-            <a href="index.html" class="text-gray-700 font-bold hover:text-red-600 transition duration-300">Home</a>
-            <a href="tours.html" class="text-gray-700 font-bold hover:text-red-600 transition duration-300">Tours</a>
-            <a href="our-bike.html" class="text-gray-700 font-bold hover:text-red-600 transition duration-300">Bike & Gear</a>
-            <a href="about.html" class="text-gray-700 font-bold hover:text-red-600 transition duration-300">About</a>
-            <a href="why-us.html" class="text-gray-700 font-bold hover:text-red-600 transition duration-300">Why us</a>
-            <a href="contact.html" class="text-gray-700 font-bold hover:text-red-600 transition duration-300">Contact</a>
-            <!-- Language Switcher Links (Desktop) -->
-            <div class="flex items-center space-x-2">
-                <a href="index.html" class="text-gray-700 hover:text-red-600 transition duration-300" aria-label="Switch to English" lang="en">EN</a>
-                <span class="text-gray-700">|</span>
-                <a href="./kh/index-kh.html" class="text-gray-700 hover:text-red-600 transition duration-300" aria-label="Switch to Khmer" lang="km">KH</a>
-            </div>
+                <a href="index.html" class="text-gray-700 font-bold hover:text-red-600 transition duration-300">Home</a>
+                <a href="tours.html" class="text-gray-700 font-bold hover:text-red-600 transition duration-300">Tours</a>
+                <a href="our-bike.html" class="text-gray-700 font-bold hover:text-red-600 transition duration-300">Bike & Gear</a>
+                <a href="about.html" class="text-gray-700 font-bold hover:text-red-600 transition duration-300">About</a>
+                <a href="why-us.html" class="text-gray-700 font-bold hover:text-red-600 transition duration-300">Why us</a>
+                <a href="contact.html" class="text-gray-700 font-bold hover:text-red-600 transition duration-300">Contact</a>
+                <!-- Language Switcher Links (Desktop) -->
+                <div class="flex items-center space-x-2">
+                    <a href="index.html" class="text-gray-700 hover:text-red-600 transition duration-300" aria-label="Switch to English" lang="en">EN</a>
+                    <span class="text-gray-700">|</span>
+                    <a href="./kh/index-kh.html" class="text-gray-700 hover:text-red-600 transition duration-300" aria-label="Switch to Khmer" lang="km">KH</a>
+                </div>
             </div>
     
             <!-- Hamburger Menu Button and Mobile Language Switcher -->
@@ -202,7 +209,7 @@
         <!-- Slider Container -->
         <div class="slider-container absolute w-full h-full flex" id="slider">
             <!-- Slide 1 -->
-            <div class="slide w-full h-full bg-cover bg-center" style="background-image: url('https://i.pinimg.com/736x/98/49/30/984930bf7684d3e3a743abe8289e1a8e.jpg');">
+            <div class="slide w-full h-full bg-cover bg-center" loading="lazy" style="background-image: url('https://i.pinimg.com/736x/98/49/30/984930bf7684d3e3a743abe8289e1a8e.jpg');">
                 <div class="absolute inset-0 bg-black bg-opacity-30"></div>
                 <div class="relative h-full flex items-end justify-center text-center text-white pb-12">
                     <div>
@@ -213,7 +220,7 @@
                 </div>
             </div>
             <!-- Slide 2 -->
-            <div class="slide w-full h-full bg-cover bg-center" style="background-image: url('https://i.pinimg.com/736x/3d/8e/23/3d8e2363446d59146df9d48c6c7f7d88.jpg');">
+            <div class="slide w-full h-full bg-cover bg-center" loading="lazy" style="background-image: url('https://i.pinimg.com/736x/3d/8e/23/3d8e2363446d59146df9d48c6c7f7d88.jpg');">
                 <div class="absolute inset-0 bg-black bg-opacity-30"></div>
                 <div class="relative h-full flex items-end justify-center text-center text-white pb-12">
                     <div>
@@ -224,7 +231,7 @@
                 </div>
             </div>
             <!-- Slide 3 -->
-            <div class="slide w-full h-full bg-cover bg-center" style="background-image: url('https://focus-cambodia.com/wp-content/uploads/2023/03/Delgado_Phnom-Tamao_0032-1-scaled-1.jpg');">
+            <div class="slide w-full h-full bg-cover bg-center" loading="lazy" style="background-image: url('https://focus-cambodia.com/wp-content/uploads/2023/03/Delgado_Phnom-Tamao_0032-1-scaled-1.jpg');">
                 <div class="absolute inset-0 bg-black bg-opacity-30"></div>
                 <div class="relative h-full flex items-end justify-center text-center text-white pb-12">
                     <div>
@@ -256,6 +263,24 @@
         </div>
     </section>
 
+    <!-- Experience the thrill -->
+    <section class="py-16">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl font-bold mb-4">Experience the Thrill</h2>
+            <div class="relative w-full max-w-4xl mx-auto rounded-lg overflow-hidden" style="padding-top: 56.25%;">
+                <iframe 
+                    class="absolute top-0 left-0 w-full h-full" 
+                    src="https://www.youtube.com/embed/_Z86pITrxTs" 
+                    title="YouTube video player" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    playsinline 
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+    </section>
+
     <!-- Bikes & Gears Carousel -->
     <section class="py-16">
         <div class="container mx-auto px-6">
@@ -273,7 +298,7 @@
                                 <a href="#" class="text-red-500 font-semibold hover:underline">View Honda Bikes & Gears ></a>
                             </div>
                             <div class="md:w-1/2">
-                                <img src="https://dirtbikeexpeditions.com/wp-content/uploads/2024/07/siem-reap-dirt-bike-tours09878.jpg" alt="Honda Dirtbike" class="w-full h-full object-cover rounded-r-lg">
+                                <img loading="lazy" src="https://dirtbikeexpeditions.com/wp-content/uploads/2024/07/siem-reap-dirt-bike-tours09878.jpg" alt="Honda Dirtbike" class="w-full h-full object-cover rounded-r-lg">
                             </div>
                         </div>
                     </div>
@@ -288,7 +313,7 @@
                                 <a href="#" class="text-red-500 font-semibold hover:underline">View Yamaha Bikes & Gears ></a>
                             </div>
                             <div class="md:w-1/2">
-                                <img src="https://dirtbikeexpeditions.com/wp-content/uploads/2024/07/dirt-bike-tour-in-cambodia2341.jpg" alt="Yamaha Dirtbike" class="w-full h-full object-cover rounded-r-lg">
+                                <img loading="lazy" src="https://dirtbikeexpeditions.com/wp-content/uploads/2024/07/dirt-bike-tour-in-cambodia2341.jpg" alt="Yamaha Dirtbike" class="w-full h-full object-cover rounded-r-lg">
                             </div>
                         </div>
                     </div>
@@ -303,7 +328,7 @@
                                 <a href="#" class="text-red-500 font-semibold hover:underline">View KTM Bikes & Gears ></a>
                             </div>
                             <div class="md:w-1/2">
-                                <img src="https://dirtbikeexpeditions.com/wp-content/uploads/2024/07/dirt-bike-tours098.jpg" alt="KTM Dirtbike" class="w-full h-full object-cover rounded-r-lg">
+                                <img loading="lazy" src="https://dirtbikeexpeditions.com/wp-content/uploads/2024/07/dirt-bike-tours098.jpg" alt="KTM Dirtbike" class="w-full h-full object-cover rounded-r-lg">
                             </div>
                         </div>
                     </div>
@@ -550,6 +575,61 @@
         </div>
     </section>
 
+    <section class="py-16">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-4">Latest Adventures & Tips</h2>
+            <p class="text-gray-600 text-center mb-12 max-w-2xl mx-auto">Check out our blog for the latest tips, guides, and rider stories!</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+                    <img src="https://i.pinimg.com/474x/6e/8e/4e/6e8e4ecb5914c9b6f479a1534f04981d.jpg" alt="Blog 1" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold mb-2">Top 5 Tips for Beginner Dirt Bikers</h3>
+                        <p class="text-gray-600 mb-4">Learn the essentials to kickstart your dirt biking journey.</p>
+                        <a href="blog-post.html" class="text-blue-600 font-semibold hover:underline">Read More</a>
+                    </div>
+                </div>
+                <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+                    <img src="https://i.pinimg.com/474x/82/37/ef/8237efec78626be558a229b06286d283.jpg" alt="Blog 2" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold mb-2">Exploring Cambodia on Two Wheels</h3>
+                        <p class="text-gray-600 mb-4">A rider’s guide to the best trails in Kampong Thom.</p>
+                        <a href="blog-post.html" class="text-blue-600 font-semibold hover:underline">Read More</a>
+                    </div>
+                </div>
+                <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+                    <img src="https://i.pinimg.com/474x/88/c5/bf/88c5bf05b2dd2372a1c6b74447c6ee0c.jpg" alt="Blog 3" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold mb-2">How to Choose the Right Dirt Bike Gear</h3>
+                        <p class="text-gray-600 mb-4">Gear up with our expert recommendations.</p>
+                        <a href="blog-post.html" class="text-blue-600 font-semibold hover:underline">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-extrabold text-center text-gray-800 mb-4 animate-fade-in">Frequently Asked Questions</h2>
+            <p class="text-gray-600 text-center mb-12 max-w-2xl mx-auto">Got questions? We’ve got answers.</p>
+            <div class="max-w-3xl mx-auto space-y-4">
+                <details class="bg-white p-4 rounded-lg shadow-md">
+                    <summary class="font-semibold text-gray-800 cursor-pointer">What should I bring for a dirt biking tour?</summary>
+                    <p class="text-gray-600 mt-2">We recommend bringing comfortable clothing, closed-toe shoes, and a water bottle. We provide all necessary gear, including helmets and gloves.</p>
+                </details>
+                <details class="bg-white p-4 rounded-lg shadow-md">
+                    <summary class="font-semibold text-gray-800 cursor-pointer">Are the tours suitable for beginners?</summary>
+                    <p class="text-gray-600 mt-2">Yes! We offer custom adventures tailored to all skill levels, with beginner-friendly trails and thorough safety briefings.</p>
+                </details>
+                <details class="bg-white p-4 rounded-lg shadow-md">
+                    <summary class="font-semibold text-gray-800 cursor-pointer">What happens if it rains during the tour?</summary>
+                    <p class="text-gray-600 mt-2">Our tours run rain or shine, as long as conditions are safe. If the weather poses a risk, we’ll reschedule or provide a full refund.</p>
+                </details>
+            </div>
+        </div>
+    </section>
+
     <!-- subscribe to the newsletter -->
     <section class="py-16 bg-gray-200">
         <div class="container mx-auto px-6 text-center">
@@ -606,52 +686,71 @@
         <i class="fab fa-whatsapp text-2xl"></i>
     </a>
 
-    <!-- Footer -->
+    <!-- sample code to load the image faster -->
+    <!-- <picture>
+        <source srcset="image.webp" type="image/webp">
+        <img src="image.jpg" alt="Description">
+    </picture> -->
+
+    <!-- Footer Section -->
     <footer class="bg-gray-800 text-white py-16">
         <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8">
             <div>
                 <img src="./images/logo.png" alt="Logo" class="h-13 mb-4">
                 <p class="text-gray-400 mb-4">DirtSurge Expeditions offers unforgettable adventures across the globe.</p>
                 <div class="flex space-x-4">
-                    <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
-                    <a href="https://youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
-                    <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://facebook.com" target="_blank" aria-label="Follow us on Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://instagram.com" target="_blank" aria-label="Follow us on Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://youtube.com" target="_blank" aria-label="Follow us on YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="https://linkedin.com" target="_blank" aria-label="Follow us on LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                 </div>
             </div>
             <div>
                 <h3 class="text-lg font-semibold mb-4">Expeditions</h3>
                 <ul class="space-y-2">
-                    <li><a href="#" class="text-gray-400 hover:text-white">Sambor Prei Kuk</a></li>
-                    <li><a href="#" class="text-gray-400 hover:text-white">Phnom Santuk</a></li>
-                    <li><a href="#" class="text-gray-400 hover:text-white">Prey Lang Wildlife Sanctuary</a></li>
-                    <li><a href="#" class="text-gray-400 hover:text-white">Stung Sen Wildlife Sanctuary</a></li>
-                    <li><a href="#" class="text-gray-400 hover:text-white">Boeng Tonle Chhmar</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white">Paris</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white">Tokyo</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white">New York</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white">Rome</a></li>
                 </ul>
             </div>
             <div>
                 <h3 class="text-lg font-semibold mb-4">Company</h3>
                 <ul class="space-y-2">
-                    <li><a href="#" class="text-gray-400 hover:text-white">Bikes & Gears</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white">About Us</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white">Why Us</a></li>
                     <li><a href="#" class="text-gray-400 hover:text-white">All Expeditions</a></li>
-                    <li><a href="#" class="text-gray-400 hover:text-white">Why us</a></li>
-                    <li><a href="#" class="text-gray-400 hover:text-white">About</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white">Bikes & Gears</a></li>
                     <li><a href="#" class="text-gray-400 hover:text-white">Reviews</a></li>
-                    <li><a href="#" class="text-gray-400 hover:text-white">Contact</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white">Contact Us</a></li>
                 </ul>
             </div>
             <div>
                 <h3 class="text-lg font-semibold mb-4">Contact</h3>
                 <p class="text-gray-400 mb-4">We Accept Payment:</p>
-                <img src="./images/payment.png" alt="Payment" sizes="70px" class="mb-4">
-                <p class="text-gray-400">6A Str, Kampong Thum Province</p>
-                <p class="text-gray-400">Phone: +855 16 700 896</p>
-                <p class="text-gray-400">WhatsApp: +855 16 700 896</p>
+                <img src="./images/payment.png" alt="Payment methods accepted" sizes="70px" class="mb-4">
+                <p class="text-gray-400">123 Adventure St, Travel City</p>
+                <p class="text-gray-400">Phone: +1 234 567 890</p>
+                <p class="text-gray-400">WhatsApp: +855 10 34 20 20</p>
                 <p class="text-gray-400">info@dirtsurgeexpeditions.com</p>
+            </div>
+        </div>
+        <div class="border-t border-gray-700 mt-8 pt-6 text-center">
+            <p class="text-gray-400 text-sm">© 2025 DirtSurge Expeditions. All rights reserved.</p>
+            <div class="flex justify-center space-x-4 mt-4">
+                <a href="#" class="text-gray-400 hover:text-white">Privacy Policy</a>
+                <a href="#" class="text-gray-400 hover:text-white">Terms of Service</a>
             </div>
         </div>
     </footer>
 
     <script src="./js/main.js"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX');
+    </script>
 </body>
 </html>
