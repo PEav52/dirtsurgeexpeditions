@@ -112,9 +112,97 @@
         .animate-fade-in {
             animation: fadeIn 1s ease-out forwards;
         }
+
+        /* Add to your <style> section in the <head> */
+            .spinner {
+            animation: rotator 1.4s linear infinite;
+        }
+
+        @keyframes rotator {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(270deg);
+            }
+        }
+
+        .path {
+            stroke-dasharray: 187;
+            stroke-dashoffset: 0;
+            transform-origin: center;
+            animation: dash 1.4s ease-in-out infinite, colors 5.6s ease-in-out infinite;
+        }
+
+        @keyframes colors {
+            0% {
+                stroke: #4285F4;
+            }
+            25% {
+                stroke: #DE3E35;
+            }
+            50% {
+                stroke: #F7C223;
+            }
+            75% {
+                stroke: #1B9A59;
+            }
+            100% {
+                stroke: #4285F4;
+            }
+        }
+
+        @keyframes dash {
+            0% {
+                stroke-dashoffset: 187;
+            }
+            50% {
+                stroke-dashoffset: 46.75;
+                transform: rotate(135deg);
+            }
+            100% {
+                stroke-dashoffset: 187;
+                transform: rotate(450deg);
+            }
+        }
+
     </style>
 </head>
 <body class="font-sans">
+    <!-- Add this right after the opening <body> tag -->
+    <div id="loading-spinner" class="fixed inset-0 flex items-center justify-center bg-white bg-opacity-80 z-50 hidden">
+        <svg class="spinner" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+            <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
+        </svg>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const spinner = document.getElementById('loading-spinner');
+            const links = document.querySelectorAll('a[href]:not([href^="mailto"]):not([href^="tel"]):not([href^="https"]):not([href^="#"])');
+
+            links.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault(); // Prevent immediate navigation
+                    const href = link.getAttribute('href');
+
+                    // Show the spinner
+                    spinner.classList.remove('hidden');
+
+                    // Simulate a delay for the spinner (optional, adjust as needed)
+                    setTimeout(() => {
+                        window.location.href = href; // Navigate to the new page
+                    }, 500); // 500ms delay to show the spinner
+                });
+            });
+
+            // Hide the spinner when the new page loads
+            window.addEventListener('load', () => {
+                spinner.classList.add('hidden');
+            });
+        });
+    </script>
+    
     <!-- Navigation -->
     <nav class="bg-white shadow-md py-4">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

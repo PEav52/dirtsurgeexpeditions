@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Join DirtSurge Expeditions for thrilling dirt bike tours in Cambodia, exploring ancient temples, jungles, and rural villages.">
+    <!-- <meta name="description" content="Join DirtSurge Expeditions for thrilling dirt bike tours in Cambodia, exploring ancient temples, jungles, and rural villages.">
     <meta name="keywords" content="dirt bike tours, Cambodia adventure, off-road biking, Kampong Thom, motorcycle expeditions">
     <meta property="og:title" content="DirtSurge Expeditions - Adventure Dirt Bike Tours in Cambodia">
     <meta property="og:description" content="Experience thrilling dirt bike adventures through Cambodia's jungles, temples, and villages with DirtSurge Expeditions.">
     <meta property="og:image" content="https://yourwebsite.com/images/og-image.jpg">
-    <meta property="og:url" content="https://yourwebsite.com">
+    <meta property="og:url" content="https://yourwebsite.com"> -->
     <title>DirtSurge Expeditions</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -145,16 +145,104 @@
         .read-more:hover {
             text-decoration: underline;
         }
+
+        /* Add to your <style> section in the <head> */
+            .spinner {
+            animation: rotator 1.4s linear infinite;
+        }
+
+        @keyframes rotator {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(270deg);
+            }
+        }
+
+        .path {
+            stroke-dasharray: 187;
+            stroke-dashoffset: 0;
+            transform-origin: center;
+            animation: dash 1.4s ease-in-out infinite, colors 5.6s ease-in-out infinite;
+        }
+
+        @keyframes colors {
+            0% {
+                stroke: #4285F4;
+            }
+            25% {
+                stroke: #DE3E35;
+            }
+            50% {
+                stroke: #F7C223;
+            }
+            75% {
+                stroke: #1B9A59;
+            }
+            100% {
+                stroke: #4285F4;
+            }
+        }
+
+        @keyframes dash {
+            0% {
+                stroke-dashoffset: 187;
+            }
+            50% {
+                stroke-dashoffset: 46.75;
+                transform: rotate(135deg);
+            }
+            100% {
+                stroke-dashoffset: 187;
+                transform: rotate(450deg);
+            }
+        }
+
     </style>
 </head>
 <body class="font-sans">
+    <!-- Add this right after the opening <body> tag -->
+    <div id="loading-spinner" class="fixed inset-0 flex items-center justify-center bg-white bg-opacity-80 z-50 hidden">
+        <svg class="spinner" width="65px" height="65px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+            <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
+        </svg>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const spinner = document.getElementById('loading-spinner');
+            const links = document.querySelectorAll('a[href]:not([href^="mailto"]):not([href^="tel"]):not([href^="https"]):not([href^="#"])');
+
+            links.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault(); // Prevent immediate navigation
+                    const href = link.getAttribute('href');
+
+                    // Show the spinner
+                    spinner.classList.remove('hidden');
+
+                    // Simulate a delay for the spinner (optional, adjust as needed)
+                    setTimeout(() => {
+                        window.location.href = href; // Navigate to the new page
+                    }, 500); // 500ms delay to show the spinner
+                });
+            });
+
+            // Hide the spinner when the new page loads
+            window.addEventListener('load', () => {
+                spinner.classList.add('hidden');
+            });
+        });
+    </script>
+
     <!-- Navigation -->
     <nav class="bg-white shadow-md py-4">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center">
             <!-- Logo -->
             <div class="flex items-center">
-            <img src="./images/logo.png" alt="Company Logo" class="h-16" loading="lazy">
+            <img src="./images/logo.png" alt="Company Logo" class="h-16">
             </div>
     
             <!-- Desktop Menu -->
@@ -209,7 +297,7 @@
         <!-- Slider Container -->
         <div class="slider-container absolute w-full h-full flex" id="slider">
             <!-- Slide 1 -->
-            <div class="slide w-full h-full bg-cover bg-center" loading="lazy" style="background-image: url('https://i.pinimg.com/736x/98/49/30/984930bf7684d3e3a743abe8289e1a8e.jpg');">
+            <div class="slide w-full h-full bg-cover bg-center" style="background-image: url('https://i.pinimg.com/736x/98/49/30/984930bf7684d3e3a743abe8289e1a8e.jpg');">
                 <div class="absolute inset-0 bg-black bg-opacity-30"></div>
                 <div class="relative h-full flex items-end justify-center text-center text-white pb-12">
                     <div>
@@ -220,7 +308,7 @@
                 </div>
             </div>
             <!-- Slide 2 -->
-            <div class="slide w-full h-full bg-cover bg-center" loading="lazy" style="background-image: url('https://i.pinimg.com/736x/3d/8e/23/3d8e2363446d59146df9d48c6c7f7d88.jpg');">
+            <div class="slide w-full h-full bg-cover bg-center" style="background-image: url('https://i.pinimg.com/736x/3d/8e/23/3d8e2363446d59146df9d48c6c7f7d88.jpg');">
                 <div class="absolute inset-0 bg-black bg-opacity-30"></div>
                 <div class="relative h-full flex items-end justify-center text-center text-white pb-12">
                     <div>
@@ -231,7 +319,7 @@
                 </div>
             </div>
             <!-- Slide 3 -->
-            <div class="slide w-full h-full bg-cover bg-center" loading="lazy" style="background-image: url('https://focus-cambodia.com/wp-content/uploads/2023/03/Delgado_Phnom-Tamao_0032-1-scaled-1.jpg');">
+            <div class="slide w-full h-full bg-cover bg-center" style="background-image: url('https://focus-cambodia.com/wp-content/uploads/2023/03/Delgado_Phnom-Tamao_0032-1-scaled-1.jpg');">
                 <div class="absolute inset-0 bg-black bg-opacity-30"></div>
                 <div class="relative h-full flex items-end justify-center text-center text-white pb-12">
                     <div>
@@ -271,7 +359,7 @@
                 <iframe 
                     class="absolute top-0 left-0 w-full h-full" 
                     src="https://www.youtube.com/embed/_Z86pITrxTs" 
-                    title="YouTube video player" 
+                    title="DirtSurge Expeditions - Adventure Dirt Bike Tours in Cambodia" 
                     frameborder="0" 
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                     playsinline 
@@ -298,7 +386,7 @@
                                 <a href="#" class="text-red-500 font-semibold hover:underline">View Honda Bikes & Gears ></a>
                             </div>
                             <div class="md:w-1/2">
-                                <img loading="lazy" src="https://dirtbikeexpeditions.com/wp-content/uploads/2024/07/siem-reap-dirt-bike-tours09878.jpg" alt="Honda Dirtbike" class="w-full h-full object-cover rounded-r-lg">
+                                <img src="https://dirtbikeexpeditions.com/wp-content/uploads/2024/07/siem-reap-dirt-bike-tours09878.jpg" alt="Honda Dirtbike" class="w-full h-full object-cover rounded-r-lg">
                             </div>
                         </div>
                     </div>
@@ -313,7 +401,7 @@
                                 <a href="#" class="text-red-500 font-semibold hover:underline">View Yamaha Bikes & Gears ></a>
                             </div>
                             <div class="md:w-1/2">
-                                <img loading="lazy" src="https://dirtbikeexpeditions.com/wp-content/uploads/2024/07/dirt-bike-tour-in-cambodia2341.jpg" alt="Yamaha Dirtbike" class="w-full h-full object-cover rounded-r-lg">
+                                <img src="https://dirtbikeexpeditions.com/wp-content/uploads/2024/07/dirt-bike-tour-in-cambodia2341.jpg" alt="Yamaha Dirtbike" class="w-full h-full object-cover rounded-r-lg">
                             </div>
                         </div>
                     </div>
@@ -328,7 +416,7 @@
                                 <a href="#" class="text-red-500 font-semibold hover:underline">View KTM Bikes & Gears ></a>
                             </div>
                             <div class="md:w-1/2">
-                                <img loading="lazy" src="https://dirtbikeexpeditions.com/wp-content/uploads/2024/07/dirt-bike-tours098.jpg" alt="KTM Dirtbike" class="w-full h-full object-cover rounded-r-lg">
+                                <img src="https://dirtbikeexpeditions.com/wp-content/uploads/2024/07/dirt-bike-tours098.jpg" alt="KTM Dirtbike" class="w-full h-full object-cover rounded-r-lg">
                             </div>
                         </div>
                     </div>
@@ -745,12 +833,12 @@
     </footer>
 
     <script src="./js/main.js"></script>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
         gtag('config', 'G-XXXXXXXXXX');
-    </script>
+    </script> -->
 </body>
 </html>

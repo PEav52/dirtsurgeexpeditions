@@ -276,3 +276,4 @@ menuToggleTour.addEventListener('click', () => {
 
 // end of Tours webpage
 
+// Loading animation
